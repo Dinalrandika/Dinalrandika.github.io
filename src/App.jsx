@@ -6,7 +6,10 @@ const projects = [
     name: "Arrichiello",
     url: "https://arrichiello.it/",
     image: "/assets/showcase-arrichiello.avif",
-    alt: "Homepage Arrichiello con materiali e finiture per interni",
+    alt: {
+      it: "Homepage Arrichiello con materiali e finiture per interni",
+      en: "Arrichiello homepage featuring interior materials and finishes",
+    },
     category: { it: "Showroom e interior design", en: "Showroom and interior design" },
     summary: {
       it: "Un’esperienza digitale premium per raccontare oltre cinquant’anni di competenza, due showroom e un servizio completo per architetti e privati.",
@@ -22,7 +25,10 @@ const projects = [
     name: "Around Tuscany Osteria",
     url: "https://aroundtuscanyosteria.it/en/",
     image: "/assets/showcase-around-tuscany.avif",
-    alt: "Homepage Around Tuscany Osteria con sala del ristorante",
+    alt: {
+      it: "Homepage Around Tuscany Osteria con sala del ristorante",
+      en: "Around Tuscany Osteria homepage showing the restaurant dining room",
+    },
     category: { it: "Ristorante ed eventi", en: "Restaurant and events" },
     summary: {
       it: "Un sito immersivo per un’osteria toscana con ristorante, terrazza sul lago, menu, matrimoni ed eventi privati.",
@@ -38,7 +44,10 @@ const projects = [
     name: "Piserchia Eventi",
     url: "https://bewildered-line-651237.framer.app/",
     image: "/assets/showcase-piserchia.avif",
-    alt: "Homepage Piserchia Eventi con wedding planner",
+    alt: {
+      it: "Homepage Piserchia Eventi con wedding planner",
+      en: "Piserchia Eventi homepage featuring the wedding planner",
+    },
     category: { it: "Wedding ed event planner", en: "Wedding and event planner" },
     summary: {
       it: "Una presenza elegante e personale per comunicare il metodo della planner, i servizi e la fiducia necessaria prima del primo contatto.",
@@ -54,7 +63,10 @@ const projects = [
     name: "Il Profeta Firenze",
     url: "https://www.ristoranteilprofetafirenze.com/",
     image: "/assets/showcase-il-profeta.avif",
-    alt: "Homepage Il Profeta Firenze con piatto toscano",
+    alt: {
+      it: "Homepage Il Profeta Firenze con piatto toscano",
+      en: "Il Profeta Firenze homepage featuring a Tuscan dish",
+    },
     category: { it: "Ristorante storico a Firenze", en: "Historic Florence restaurant" },
     summary: {
       it: "Un racconto digitale per un ristorante fiorentino attivo dal 1979, noto per la cucina toscana e la leggendaria Bontà del Profeta.",
@@ -70,7 +82,10 @@ const projects = [
     name: "Le Delizie in Tavola",
     url: "https://primary-spots-545945.framer.app/",
     image: "/assets/showcase-delizie.avif",
-    alt: "Homepage Le Delizie in Tavola con produzione di cibo italiano",
+    alt: {
+      it: "Homepage Le Delizie in Tavola con produzione di cibo italiano",
+      en: "Le Delizie in Tavola homepage featuring Italian food production",
+    },
     category: { it: "Food brand e catalogo", en: "Food brand and catalogue" },
     summary: {
       it: "Una direzione visiva contemporanea per valorizzare qualità italiana, produzione, catalogo e presenza internazionale del brand.",
@@ -86,7 +101,10 @@ const projects = [
     name: "Puteca Osteria",
     url: "https://www.putecaosteria.com/",
     image: "/assets/showcase-puteca.avif",
-    alt: "Homepage Puteca Osteria con piatti e offerte",
+    alt: {
+      it: "Homepage Puteca Osteria con piatti e offerte",
+      en: "Puteca Osteria homepage featuring dishes and offers",
+    },
     category: { it: "Osteria e braceria", en: "Osteria and steakhouse" },
     summary: {
       it: "Una vetrina energica per offerte, menu, eventi e prenotazione tavolo, costruita intorno alle immagini e all’identità del locale.",
@@ -116,6 +134,7 @@ const content = {
     objective: "Obiettivo",
     outcome: "Risultato",
     visit: "Visita il sito",
+    liveProject: "progetto live",
     demoKicker: "Parma, partiamo da una demo",
     demoTitle: "Prima ti mostro una direzione concreta. Poi decidiamo se costruirla davvero.",
     demoText: "Per ristoranti, hotel e bar selezionati di Parma preparo una prima demo visiva senza impegno. È un modo semplice per vedere il potenziale prima di parlare di un progetto completo.",
@@ -153,7 +172,9 @@ const content = {
     contactTitle: "Raccontami la tua attività.",
     contactText: "Dimmi cosa non funziona oggi o cosa vuoi ottenere. Ti rispondo con un primo consiglio pratico, senza presentazioni complicate.",
     email: "Scrivimi via email",
+    emailSubject: "Richiesta progetto web",
     whatsapp: "Scrivimi su WhatsApp",
+    profileAlt: "Dinal Randika, web designer e developer",
     footer: "Web design da Parma · disponibile in Italia e da remoto",
   },
   en: {
@@ -171,6 +192,7 @@ const content = {
     objective: "Objective",
     outcome: "Outcome",
     visit: "Visit website",
+    liveProject: "live project",
     demoKicker: "Parma, start with a demo",
     demoTitle: "First I show you a concrete direction. Then we decide whether to build it.",
     demoText: "For selected restaurants, hotels, and bars in Parma, I prepare an initial visual demo with no obligation. It is a simple way to see the potential before discussing a full project.",
@@ -208,7 +230,9 @@ const content = {
     contactTitle: "Tell me about your business.",
     contactText: "Tell me what is not working today or what you want to achieve. I will reply with a practical first recommendation, without a complicated sales presentation.",
     email: "Send me an email",
+    emailSubject: "Website project enquiry",
     whatsapp: "Message me on WhatsApp",
+    profileAlt: "Dinal Randika, web designer and developer",
     footer: "Web design from Parma · available across Italy and remotely",
   },
 };
@@ -224,11 +248,11 @@ function Brand() {
   );
 }
 
-function BrowserFrame({ project, index }) {
+function BrowserFrame({ project, index, lang, liveProject }) {
   return (
     <div className="browser-shell">
-      <div className="browser-bar"><span /><span /><span /><small>{String(index + 1).padStart(2, "0")} · live project</small></div>
-      <img src={project.image} alt={project.alt} loading={index < 2 ? "eager" : "lazy"} decoding="async" />
+      <div className="browser-bar"><span /><span /><span /><small>{String(index + 1).padStart(2, "0")} · {liveProject}</small></div>
+      <img src={project.image} alt={project.alt[lang]} loading={index < 2 ? "eager" : "lazy"} decoding="async" />
     </div>
   );
 }
@@ -296,7 +320,7 @@ export function App() {
                 <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 <a className="text-link" href={project.url} target="_blank" rel="noreferrer">{t.visit} <ExternalLink size={16} /></a>
               </div>
-              <BrowserFrame project={project} index={index} />
+              <BrowserFrame project={project} index={index} lang={lang} liveProject={t.liveProject} />
             </article>
           ))}
         </div>
@@ -313,7 +337,7 @@ export function App() {
       </section>
 
       <section id="about" className="about section-shell" aria-labelledby="about-title">
-        <div className="portrait-wrap"><img src="/assets/dinal-profile.avif" alt="Dinal Randika, web designer and developer" loading="lazy" decoding="async" /></div>
+        <div className="portrait-wrap"><img src="/assets/dinal-profile.avif" alt={t.profileAlt} loading="lazy" decoding="async" /></div>
         <div className="about-copy">
           <p className="section-label">{t.aboutKicker}</p><h2 id="about-title">{t.aboutTitle}</h2>
           {t.aboutText.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
@@ -353,7 +377,7 @@ export function App() {
         <div className="contact-inner section-shell">
           <p className="section-label">{t.contactKicker}</p><h2 id="contact-title">{t.contactTitle}</h2><p>{t.contactText}</p>
           <div className="contact-actions">
-            <a className="light-button" href="mailto:dinalrandika@icloud.com?subject=Richiesta%20progetto%20web"><Mail size={18} />{t.email}</a>
+            <a className="light-button" href={`mailto:dinalrandika@icloud.com?subject=${encodeURIComponent(t.emailSubject)}`}><Mail size={18} />{t.email}</a>
             <a className="ghost-button" href="https://wa.me/393393515742" target="_blank" rel="noreferrer"><MessageCircle size={18} />{t.whatsapp}</a>
           </div>
           <div className="contact-details"><a href="mailto:dinalrandika@icloud.com">dinalrandika@icloud.com</a><a href="tel:+393393515742">+39 339 351 5742</a></div>
