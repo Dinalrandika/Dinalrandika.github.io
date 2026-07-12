@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ExternalLink, Mail, Menu, MessageCircle, X } from "lucide-react";
 
 const projects = [
@@ -121,10 +121,17 @@ const projects = [
 const content = {
   it: {
     nav: ["Home", "Progetti", "Prezzi", "Chi sono", "Contatti"],
+    primaryNavLabel: "Navigazione principale",
+    languageLabel: "Selezione lingua",
+    menuLabel: "Apri o chiudi la navigazione",
+    proofLabel: "Esperienza verificabile",
+    backToTop: "Torna all’inizio",
     heroEyebrow: "Web design pratico per attività che vogliono crescere",
     heroTitle: "Il tuo sito può fare di più.",
     heroText: "Creo siti Framer e WordPress moderni, veloci e pensati per trasformare visite in prenotazioni, richieste e clienti reali.",
     start: "Parliamo del progetto",
+    workCta: "Guarda i progetti",
+    heroProof: ["Framer & WordPress", "6 progetti live", "Parma · disponibile in tutta Italia"],
     explore: "Scorri per esplorare",
     introKicker: "Non basta essere online",
     introTitle: "Un sito deve spiegare bene, creare fiducia e rendere semplice il prossimo passo.",
@@ -137,7 +144,8 @@ const content = {
     liveProject: "progetto live",
     demoKicker: "Parma, partiamo da una demo",
     demoTitle: "Prima ti mostro una direzione concreta. Poi decidiamo se costruirla davvero.",
-    demoText: "Per ristoranti, hotel e bar selezionati di Parma preparo una prima demo visiva senza impegno. È un modo semplice per vedere il potenziale prima di parlare di un progetto completo.",
+    demoText: "Per ristoranti, hotel e bar selezionati di Parma preparo una prima direzione visiva della homepage, usando le informazioni pubbliche dell’attività. Serve a rendere concreta una possibilità, prima di definire un progetto completo.",
+    demoNote: "La demo è un’anteprima iniziale, non un sito completo: se la direzione piace, concordiamo contenuti, funzionalità, prezzo e lancio. Nessun obbligo per l’attività selezionata.",
     demoSteps: ["Scelgo un’attività con potenziale", "Creo una homepage dimostrativa", "La presento direttamente al titolare", "Se piace, definiamo contenuti, prezzo e lancio"],
     demoCta: "Richiedi una demo",
     aboutKicker: "La persona dietro il lavoro",
@@ -153,6 +161,7 @@ const content = {
     popular: "Più scelto",
     from: "Da",
     choose: "Parliamone",
+    planCtas: ["Valuta il Sito Essenziale", "Valuta il Sito Business", "Valuta l’Esperienza Premium"],
     plans: [
       ["Sito Essenziale", "€790", "Per una piccola attività che ha bisogno di una presenza chiara e professionale.", ["Homepage personalizzata", "Design responsive", "Contatto o WhatsApp", "SEO tecnico di base", "2 revisioni"]],
       ["Sito Business", "€1.290", "Per ristoranti, hotel, bar e servizi che devono presentare più contenuti e convertire.", ["Fino a 5 pagine", "Menu, servizi o camere", "Booking o moduli", "Italiano + inglese", "SEO base e analytics", "30 giorni di supporto"], true],
@@ -162,7 +171,7 @@ const content = {
     faqKicker: "Domande frequenti",
     faqTitle: "Prima di iniziare.",
     faqs: [
-      ["Quanto tempo serve?", "Una landing page richiede normalmente 1–2 settimane. Un sito business richiede circa 3–5 settimane, in base ai contenuti e alle revisioni."],
+      ["Quanto tempo serve?", "Dipende dal numero di pagine, dai contenuti, dalle integrazioni e dalla velocità delle revisioni. Dopo il primo confronto preparo una proposta con fasi e tempistiche definite per quel progetto."],
       ["Devo avere già testi e foto?", "No. Posso aiutarti a organizzare i contenuti, usare il materiale esistente e indicarti cosa serve per completare il sito."],
       ["Posso modificare il sito dopo?", "Sì. Posso costruire sezioni facili da aggiornare e offrire manutenzione quando preferisci delegare."],
       ["Lavori solo a Parma?", "No. Lavoro con clienti in Italia e da remoto. Parma è il focus della mia iniziativa demo per ristoranti, hotel e bar locali."],
@@ -174,15 +183,23 @@ const content = {
     email: "Scrivimi via email",
     emailSubject: "Richiesta progetto web",
     whatsapp: "Scrivimi su WhatsApp",
+    whatsappMessage: "Ciao Dinal, vorrei parlare del sito web della mia attività. Il nome dell’attività è: ",
     profileAlt: "Dinal Randika, web designer e developer",
     footer: "Web design da Parma · disponibile in Italia e da remoto",
   },
   en: {
     nav: ["Home", "Projects", "Pricing", "About", "Contact"],
+    primaryNavLabel: "Primary navigation",
+    languageLabel: "Language selection",
+    menuLabel: "Toggle navigation",
+    proofLabel: "Verified experience",
+    backToTop: "Back to top",
     heroEyebrow: "Practical web design for businesses ready to grow",
     heroTitle: "Your website can do more.",
     heroText: "I create modern, fast Framer and WordPress websites designed to turn visits into bookings, enquiries, and real customers.",
     start: "Start a project",
+    workCta: "View selected work",
+    heroProof: ["Framer & WordPress", "6 live projects", "Parma · available across Italy"],
     explore: "Scroll to explore",
     introKicker: "Being online is not enough",
     introTitle: "A website should explain clearly, build trust, and make the next step easy.",
@@ -195,7 +212,8 @@ const content = {
     liveProject: "live project",
     demoKicker: "Parma, start with a demo",
     demoTitle: "First I show you a concrete direction. Then we decide whether to build it.",
-    demoText: "For selected restaurants, hotels, and bars in Parma, I prepare an initial visual demo with no obligation. It is a simple way to see the potential before discussing a full project.",
+    demoText: "For selected restaurants, hotels, and bars in Parma, I prepare an initial homepage direction using the business’s public information. It makes a possible improvement concrete before defining a full project.",
+    demoNote: "The demo is an initial visual preview, not a complete website. If the direction works, we agree the content, functionality, price, and launch. There is no obligation for the selected business.",
     demoSteps: ["Select a business with potential", "Create a demonstration homepage", "Present it directly to the owner", "If it works, agree content, price, and launch"],
     demoCta: "Request a demo",
     aboutKicker: "The person behind the work",
@@ -211,6 +229,7 @@ const content = {
     popular: "Most popular",
     from: "From",
     choose: "Let’s talk",
+    planCtas: ["Discuss Essential Site", "Discuss Business Site", "Discuss Premium Experience"],
     plans: [
       ["Essential Site", "€790", "For a small business that needs a clear and professional online presence.", ["Custom homepage", "Responsive design", "Contact or WhatsApp", "Basic technical SEO", "2 revision rounds"]],
       ["Business Site", "€1,290", "For restaurants, hotels, bars, and services that need more content and stronger conversion paths.", ["Up to 5 pages", "Menus, services, or rooms", "Booking or forms", "Italian + English", "Basic SEO and analytics", "30 days of support"], true],
@@ -220,7 +239,7 @@ const content = {
     faqKicker: "Frequently asked questions",
     faqTitle: "Before we start.",
     faqs: [
-      ["How long does it take?", "A landing page normally takes 1–2 weeks. A business website takes around 3–5 weeks, depending on content and revisions."],
+      ["How long does it take?", "It depends on the number of pages, content, integrations, and the pace of revisions. After our first conversation, I prepare a proposal with phases and timing defined for that project."],
       ["Do I need text and photos already?", "No. I can help organize the content, work with existing material, and explain what is still needed."],
       ["Can I update the website later?", "Yes. I can build easy-to-update sections and offer maintenance when you prefer to delegate."],
       ["Do you only work in Parma?", "No. I work with clients across Italy and remotely. Parma is the focus of my local demo initiative for restaurants, hotels, and bars."],
@@ -232,6 +251,7 @@ const content = {
     email: "Send me an email",
     emailSubject: "Website project enquiry",
     whatsapp: "Message me on WhatsApp",
+    whatsappMessage: "Hi Dinal, I would like to discuss a website for my business. The business name is: ",
     profileAlt: "Dinal Randika, web designer and developer",
     footer: "Web design from Parma · available across Italy and remotely",
   },
@@ -252,7 +272,15 @@ function BrowserFrame({ project, index, lang, liveProject }) {
   return (
     <div className="browser-shell">
       <div className="browser-bar"><span /><span /><span /><small>{String(index + 1).padStart(2, "0")} · {liveProject}</small></div>
-      <img src={project.image} alt={project.alt[lang]} loading={index < 2 ? "eager" : "lazy"} decoding="async" />
+      <img
+        src={project.image}
+        alt={project.alt[lang]}
+        width="1440"
+        height="1000"
+        sizes="(max-width: 980px) calc(100vw - 40px), 62vw"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
   );
 }
@@ -260,6 +288,8 @@ function BrowserFrame({ project, index, lang, liveProject }) {
 export function App() {
   const [lang, setLang] = useState("it");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const [openFaq, setOpenFaq] = useState(null);
   const t = content[lang];
 
   useEffect(() => {
@@ -269,48 +299,100 @@ export function App() {
       : "Dinal Randika — Web designer and developer in Parma";
   }, [lang]);
 
+  useEffect(() => {
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActiveSection(entry.target.id);
+      });
+    }, { rootMargin: "-18% 0px -68% 0px", threshold: 0 });
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useLayoutEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return undefined;
+    const target = document.getElementById(hash);
+    if (!target) return undefined;
+    const root = document.documentElement;
+    const previousBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    target.scrollIntoView({ block: "start", behavior: "auto" });
+    root.style.scrollBehavior = previousBehavior;
+    return undefined;
+  }, []);
+
+  useEffect(() => {
+    const targets = document.querySelectorAll("[data-reveal]");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targets.forEach((target) => target.classList.add("is-visible"));
+      return undefined;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -9% 0px", threshold: 0.12 });
+    targets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+
   const selectLanguage = (nextLanguage) => {
     setLang(nextLanguage);
     setMenuOpen(false);
   };
 
+  const whatsappHref = `https://wa.me/393393515742?text=${encodeURIComponent(t.whatsappMessage)}`;
+
   return (
-    <main id="home">
+    <main>
       <header className="site-header">
         <Brand />
-        <nav className={menuOpen ? "nav nav--open" : "nav"} aria-label="Primary navigation">
-          {t.nav.map((label, index) => <a key={label} href={"#" + sectionIds[index]} onClick={() => setMenuOpen(false)}>{label}</a>)}
+        <nav className={menuOpen ? "nav nav--open" : "nav"} aria-label={t.primaryNavLabel}>
+          {t.nav.map((label, index) => {
+            const id = sectionIds[index];
+            return <a className={activeSection === id ? "active" : ""} aria-current={activeSection === id ? "page" : undefined} key={label} href={"#" + id} onClick={() => { setMenuOpen(false); setActiveSection(id); }}>{label}</a>;
+          })}
         </nav>
         <div className="header-tools">
-          <div className="language-switch" aria-label="Language selection">
+          <div className="language-switch" aria-label={t.languageLabel}>
             <button className={lang === "it" ? "active" : ""} onClick={() => selectLanguage("it")} aria-pressed={lang === "it"}>IT</button>
             <button className={lang === "en" ? "active" : ""} onClick={() => selectLanguage("en")} aria-pressed={lang === "en"}>EN</button>
           </div>
-          <button className="menu-button" onClick={() => setMenuOpen((open) => !open)} aria-label="Toggle navigation" aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
+          <button className="menu-button" onClick={() => setMenuOpen((open) => !open)} aria-label={t.menuLabel} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
         </div>
       </header>
 
-      <section className="hero" aria-labelledby="hero-title">
+      <section id="home" className="hero" aria-labelledby="hero-title">
         <div className="hero-glow hero-glow--one" /><div className="hero-glow hero-glow--two" />
         <div className="hero-content section-shell">
-          <p className="eyebrow">{t.heroEyebrow}</p>
-          <h1 id="hero-title">{t.heroTitle}</h1>
-          <p className="hero-copy">{t.heroText}</p>
-          <a className="primary-button" href="#contact">{t.start} <ArrowRight size={18} /></a>
+          <p className="eyebrow hero-enter hero-enter--1">{t.heroEyebrow}</p>
+          <h1 id="hero-title" className="hero-enter hero-enter--2">{t.heroTitle}</h1>
+          <p className="hero-copy hero-enter hero-enter--3">{t.heroText}</p>
+          <div className="hero-actions hero-enter hero-enter--4">
+            <a className="primary-button" href="#contact">{t.start} <ArrowRight size={18} /></a>
+            <a className="secondary-button" href="#projects">{t.workCta} <ArrowDown size={17} /></a>
+          </div>
+          <div className="hero-proof hero-enter hero-enter--5" aria-label={t.proofLabel}>
+            {t.heroProof.map((item) => <span key={item}>{item}</span>)}
+          </div>
         </div>
         <a className="scroll-cue" href="#intro">{t.explore} <ArrowDown size={16} /></a>
       </section>
 
-      <section id="intro" className="intro section-shell">
+      <section id="intro" className="intro section-shell reveal" data-reveal>
         <p className="section-label">{t.introKicker}</p>
         <div><h2>{t.introTitle}</h2><p>{t.introText}</p></div>
       </section>
 
       <section id="projects" className="projects section-shell" aria-labelledby="projects-title">
-        <div className="section-heading"><p className="section-label">{t.projectsKicker}</p><h2 id="projects-title">{t.projectsTitle}</h2></div>
+        <div className="section-heading reveal" data-reveal><p className="section-label">{t.projectsKicker}</p><h2 id="projects-title">{t.projectsTitle}</h2></div>
         <div className="project-list">
           {projects.map((project, index) => (
-            <article className="project" key={project.name}>
+            <article className="project reveal" data-reveal key={project.name}>
               <div className="project-copy">
                 <p className="project-index">{String(index + 1).padStart(2, "0")} / 06</p>
                 <p className="project-category">{project.category[lang]}</p>
@@ -327,18 +409,18 @@ export function App() {
       </section>
 
       <section className="demo-section">
-        <div className="demo-grid section-shell">
+        <div className="demo-grid section-shell reveal" data-reveal>
           <div className="demo-copy">
-            <p className="section-label">{t.demoKicker}</p><h2>{t.demoTitle}</h2><p>{t.demoText}</p>
+            <p className="section-label">{t.demoKicker}</p><h2>{t.demoTitle}</h2><p>{t.demoText}</p><p className="demo-note">{t.demoNote}</p>
             <a className="light-button" href="#contact">{t.demoCta} <ArrowRight size={18} /></a>
           </div>
           <ol className="demo-steps">{t.demoSteps.map((step, index) => <li key={step}><span>0{index + 1}</span><p>{step}</p></li>)}</ol>
         </div>
       </section>
 
-      <section id="about" className="about section-shell" aria-labelledby="about-title">
-        <div className="portrait-wrap"><img src="/assets/dinal-profile.avif" alt={t.profileAlt} loading="lazy" decoding="async" /></div>
-        <div className="about-copy">
+      <section className="about section-shell reveal" data-reveal aria-labelledby="about-title">
+        <div className="portrait-wrap"><img src="/assets/dinal-profile.avif" alt={t.profileAlt} width="1086" height="1448" sizes="(max-width: 650px) 88vw, 42vw" loading="lazy" decoding="async" /></div>
+        <div id="about" className="about-copy">
           <p className="section-label">{t.aboutKicker}</p><h2 id="about-title">{t.aboutTitle}</h2>
           {t.aboutText.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           <div className="skill-list">{t.skills.map((skill) => <span key={skill}><Check size={15} />{skill}</span>)}</div>
@@ -346,30 +428,48 @@ export function App() {
       </section>
 
       <section id="pricing" className="pricing section-shell" aria-labelledby="pricing-title">
-        <div className="section-heading pricing-heading">
+        <div className="section-heading pricing-heading reveal" data-reveal>
           <p className="section-label">{t.pricingKicker}</p>
           <div><h2 id="pricing-title">{t.pricingTitle}</h2><p>{t.pricingIntro}</p></div>
         </div>
         <div className="pricing-grid">
-          {t.plans.map(([name, price, description, items, popular]) => (
-            <article className={popular ? "price-card price-card--popular" : "price-card"} key={name}>
+          {t.plans.map(([name, price, description, items, popular], index) => (
+            <article className={popular ? "price-card price-card--popular reveal" : "price-card reveal"} data-reveal style={{ "--reveal-delay": `${index * 55}ms` }} key={name}>
               {popular && <span className="popular-label">{t.popular}</span>}
               <h3>{name}</h3><p>{description}</p>
               <div className="price"><span>{t.from}</span><strong>{price}</strong></div>
               <ul>{items.map((item) => <li key={item}><Check size={16} />{item}</li>)}</ul>
-              <a href="#contact">{t.choose} <ArrowRight size={16} /></a>
+              <a href="#contact">{t.planCtas[index]} <ArrowRight size={16} /></a>
             </article>
           ))}
         </div>
         <p className="pricing-note">{t.pricingNote}</p>
       </section>
 
-      <section className="faq section-shell" aria-labelledby="faq-title">
+      <section className="faq section-shell reveal" data-reveal aria-labelledby="faq-title">
         <div className="faq-heading"><p className="section-label">{t.faqKicker}</p><h2 id="faq-title">{t.faqTitle}</h2></div>
         <div className="faq-list">
-          {t.faqs.map(([question, answer], index) => (
-            <details key={question}><summary><span>0{index + 1}</span>{question}<ArrowDown size={18} /></summary><p>{answer}</p></details>
-          ))}
+          {t.faqs.map(([question, answer], index) => {
+            const isOpen = openFaq === index;
+            return (
+              <div className={isOpen ? "faq-item faq-item--open" : "faq-item"} key={question}>
+                <button
+                  id={`faq-button-${index}`}
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${index}`}
+                  onClick={() => setOpenFaq(isOpen ? null : index)}
+                  onKeyDown={(event) => {
+                    if (event.key !== "Enter" && event.key !== " ") return;
+                    event.preventDefault();
+                    setOpenFaq(isOpen ? null : index);
+                  }}
+                >
+                  <span>0{index + 1}</span><strong>{question}</strong><ArrowDown size={18} />
+                </button>
+                <div id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-button-${index}`} hidden={!isOpen}><p>{answer}</p></div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -378,13 +478,13 @@ export function App() {
           <p className="section-label">{t.contactKicker}</p><h2 id="contact-title">{t.contactTitle}</h2><p>{t.contactText}</p>
           <div className="contact-actions">
             <a className="light-button" href={`mailto:dinalrandika@icloud.com?subject=${encodeURIComponent(t.emailSubject)}`}><Mail size={18} />{t.email}</a>
-            <a className="ghost-button" href="https://wa.me/393393515742" target="_blank" rel="noreferrer"><MessageCircle size={18} />{t.whatsapp}</a>
+            <a className="ghost-button" href={whatsappHref} target="_blank" rel="noreferrer"><MessageCircle size={18} />{t.whatsapp}</a>
           </div>
           <div className="contact-details"><a href="mailto:dinalrandika@icloud.com">dinalrandika@icloud.com</a><a href="tel:+393393515742">+39 339 351 5742</a></div>
         </div>
       </section>
 
-      <footer className="site-footer section-shell"><Brand /><p>{t.footer}</p><a href="#home" aria-label="Back to top"><ArrowUpRight size={19} /></a></footer>
+      <footer className="site-footer section-shell"><Brand /><p>{t.footer}</p><a href="#home" aria-label={t.backToTop}><ArrowUpRight size={19} /></a></footer>
     </main>
   );
 }
