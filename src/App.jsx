@@ -7,8 +7,8 @@ const projects = [
     url: "https://arrichiello.it/",
     image: "/assets/showcase-arrichiello.avif",
     alt: {
-      it: "Homepage Arrichiello con materiali e finiture per interni",
-      en: "Arrichiello homepage featuring interior materials and finishes",
+      it: "Homepage mobile Arrichiello con materiali e finiture per interni",
+      en: "Arrichiello mobile homepage featuring interior materials and finishes",
     },
     category: { it: "Showroom e interior design", en: "Showroom and interior design" },
     summary: {
@@ -26,8 +26,8 @@ const projects = [
     url: "https://aroundtuscanyosteria.it/en/",
     image: "/assets/showcase-around-tuscany.avif",
     alt: {
-      it: "Homepage Around Tuscany Osteria con sala del ristorante",
-      en: "Around Tuscany Osteria homepage showing the restaurant dining room",
+      it: "Homepage mobile Around Tuscany Osteria con vista sul lago",
+      en: "Around Tuscany Osteria mobile homepage showing the lake view",
     },
     category: { it: "Ristorante ed eventi", en: "Restaurant and events" },
     summary: {
@@ -45,8 +45,8 @@ const projects = [
     url: "https://bewildered-line-651237.framer.app/",
     image: "/assets/showcase-piserchia.avif",
     alt: {
-      it: "Homepage Piserchia Eventi con wedding planner",
-      en: "Piserchia Eventi homepage featuring the wedding planner",
+      it: "Homepage mobile Piserchia Eventi con wedding planner",
+      en: "Piserchia Eventi mobile homepage featuring the wedding planner",
     },
     category: { it: "Wedding ed event planner", en: "Wedding and event planner" },
     summary: {
@@ -64,8 +64,8 @@ const projects = [
     url: "https://www.ristoranteilprofetafirenze.com/",
     image: "/assets/showcase-il-profeta.avif",
     alt: {
-      it: "Homepage Il Profeta Firenze con piatto toscano",
-      en: "Il Profeta Firenze homepage featuring a Tuscan dish",
+      it: "Homepage mobile Il Profeta Firenze con piatto toscano",
+      en: "Il Profeta Firenze mobile homepage featuring a Tuscan dish",
     },
     category: { it: "Ristorante storico a Firenze", en: "Historic Florence restaurant" },
     summary: {
@@ -83,8 +83,8 @@ const projects = [
     url: "https://primary-spots-545945.framer.app/",
     image: "/assets/showcase-delizie.avif",
     alt: {
-      it: "Homepage Le Delizie in Tavola con produzione di cibo italiano",
-      en: "Le Delizie in Tavola homepage featuring Italian food production",
+      it: "Homepage mobile Le Delizie in Tavola con produzione di cibo italiano",
+      en: "Le Delizie in Tavola mobile homepage featuring Italian food production",
     },
     category: { it: "Food brand e catalogo", en: "Food brand and catalogue" },
     summary: {
@@ -102,8 +102,8 @@ const projects = [
     url: "https://www.putecaosteria.com/",
     image: "/assets/showcase-puteca.avif",
     alt: {
-      it: "Homepage Puteca Osteria con piatti e offerte",
-      en: "Puteca Osteria homepage featuring dishes and offers",
+      it: "Homepage mobile Puteca Osteria con piatti e offerte",
+      en: "Puteca Osteria mobile homepage featuring dishes and offers",
     },
     category: { it: "Osteria e braceria", en: "Osteria and steakhouse" },
     summary: {
@@ -131,7 +131,7 @@ const content = {
     heroText: "Creo siti Framer e WordPress moderni, veloci e pensati per trasformare visite in prenotazioni, richieste e clienti reali.",
     start: "Parliamo del progetto",
     workCta: "Guarda i progetti",
-    heroProof: ["Framer & WordPress", "6 progetti live", "Parma · disponibile in tutta Italia"],
+    heroProof: ["Framer & WordPress", "6 progetti live", "Disponibile in tutta Italia"],
     explore: "Scorri per esplorare",
     introKicker: "Non basta essere online",
     introTitle: "Un sito deve spiegare bene, creare fiducia e rendere semplice il prossimo passo.",
@@ -142,9 +142,9 @@ const content = {
     outcome: "Risultato",
     visit: "Visita il sito",
     liveProject: "progetto live",
-    demoKicker: "Parma, partiamo da una demo",
+    demoKicker: "Partiamo da una demo",
     demoTitle: "Prima ti mostro una direzione concreta. Poi decidiamo se costruirla davvero.",
-    demoText: "Per ristoranti, hotel e bar selezionati di Parma preparo una prima direzione visiva della homepage, usando le informazioni pubbliche dell’attività. Serve a rendere concreta una possibilità, prima di definire un progetto completo.",
+    demoText: "Per ristoranti, hotel e bar selezionati preparo una prima direzione visiva della homepage, usando le informazioni pubbliche dell’attività. Serve a rendere concreta una possibilità, prima di definire un progetto completo.",
     demoNote: "La demo è un’anteprima iniziale, non un sito completo: se la direzione piace, concordiamo contenuti, funzionalità, prezzo e lancio. Nessun obbligo per l’attività selezionata.",
     demoSteps: ["Scelgo un’attività con potenziale", "Creo una homepage dimostrativa", "La presento direttamente al titolare", "Se piace, definiamo contenuti, prezzo e lancio"],
     demoCta: "Richiedi una demo",
@@ -174,7 +174,7 @@ const content = {
       ["Quanto tempo serve?", "Dipende dal numero di pagine, dai contenuti, dalle integrazioni e dalla velocità delle revisioni. Dopo il primo confronto preparo una proposta con fasi e tempistiche definite per quel progetto."],
       ["Devo avere già testi e foto?", "No. Posso aiutarti a organizzare i contenuti, usare il materiale esistente e indicarti cosa serve per completare il sito."],
       ["Posso modificare il sito dopo?", "Sì. Posso costruire sezioni facili da aggiornare e offrire manutenzione quando preferisci delegare."],
-      ["Lavori solo a Parma?", "No. Lavoro con clienti in Italia e da remoto. Parma è il focus della mia iniziativa demo per ristoranti, hotel e bar locali."],
+      ["Lavori anche da remoto?", "Sì. Lavoro con clienti in tutta Italia e da remoto, mantenendo confronto, revisioni e consegna semplici anche a distanza."],
       ["Cosa succede se la demo non mi piace?", "La demo iniziale per le attività selezionate non crea obblighi. Se la direzione interessa, la miglioriamo insieme e definiamo il progetto completo."],
     ],
     contactKicker: "Pronto per il prossimo passo?",
@@ -185,7 +185,7 @@ const content = {
     whatsapp: "Scrivimi su WhatsApp",
     whatsappMessage: "Ciao Dinal, vorrei parlare del sito web della mia attività. Il nome dell’attività è: ",
     profileAlt: "Dinal Randika, web designer e developer",
-    footer: "Web design da Parma · disponibile in Italia e da remoto",
+    footer: "Web design · disponibile in Italia e da remoto",
   },
   en: {
     nav: ["Home", "Projects", "Pricing", "About", "Contact"],
@@ -199,7 +199,7 @@ const content = {
     heroText: "I create modern, fast Framer and WordPress websites designed to turn visits into bookings, enquiries, and real customers.",
     start: "Start a project",
     workCta: "View selected work",
-    heroProof: ["Framer & WordPress", "6 live projects", "Parma · available across Italy"],
+    heroProof: ["Framer & WordPress", "6 live projects", "Available across Italy"],
     explore: "Scroll to explore",
     introKicker: "Being online is not enough",
     introTitle: "A website should explain clearly, build trust, and make the next step easy.",
@@ -210,9 +210,9 @@ const content = {
     outcome: "Outcome",
     visit: "Visit website",
     liveProject: "live project",
-    demoKicker: "Parma, start with a demo",
+    demoKicker: "Start with a demo",
     demoTitle: "First I show you a concrete direction. Then we decide whether to build it.",
-    demoText: "For selected restaurants, hotels, and bars in Parma, I prepare an initial homepage direction using the business’s public information. It makes a possible improvement concrete before defining a full project.",
+    demoText: "For selected restaurants, hotels, and bars, I prepare an initial homepage direction using the business’s public information. It makes a possible improvement concrete before defining a full project.",
     demoNote: "The demo is an initial visual preview, not a complete website. If the direction works, we agree the content, functionality, price, and launch. There is no obligation for the selected business.",
     demoSteps: ["Select a business with potential", "Create a demonstration homepage", "Present it directly to the owner", "If it works, agree content, price, and launch"],
     demoCta: "Request a demo",
@@ -242,7 +242,7 @@ const content = {
       ["How long does it take?", "It depends on the number of pages, content, integrations, and the pace of revisions. After our first conversation, I prepare a proposal with phases and timing defined for that project."],
       ["Do I need text and photos already?", "No. I can help organize the content, work with existing material, and explain what is still needed."],
       ["Can I update the website later?", "Yes. I can build easy-to-update sections and offer maintenance when you prefer to delegate."],
-      ["Do you only work in Parma?", "No. I work with clients across Italy and remotely. Parma is the focus of my local demo initiative for restaurants, hotels, and bars."],
+      ["Do you work remotely?", "Yes. I work with clients across Italy and remotely, keeping communication, reviews, and delivery simple at a distance."],
       ["What if I do not like the demo?", "The initial demo for selected businesses creates no obligation. If the direction is useful, we refine it together and define the full project."],
     ],
     contactKicker: "Ready for the next step?",
@@ -253,7 +253,7 @@ const content = {
     whatsapp: "Message me on WhatsApp",
     whatsappMessage: "Hi Dinal, I would like to discuss a website for my business. The business name is: ",
     profileAlt: "Dinal Randika, web designer and developer",
-    footer: "Web design from Parma · available across Italy and remotely",
+    footer: "Web design · available across Italy and remotely",
   },
 };
 
@@ -275,9 +275,9 @@ function BrowserFrame({ project, index, lang, liveProject }) {
       <img
         src={project.image}
         alt={project.alt[lang]}
-        width="1440"
-        height="1000"
-        sizes="(max-width: 980px) calc(100vw - 40px), 62vw"
+        width="900"
+        height="1200"
+        sizes="(max-width: 650px) calc(100vw - 46px), (max-width: 980px) min(620px, calc(100vw - 54px)), 42vw"
         loading="lazy"
         decoding="async"
       />
@@ -297,8 +297,8 @@ export function App() {
   useEffect(() => {
     document.documentElement.lang = lang;
     document.title = lang === "it"
-      ? "Dinal Randika — Web designer e developer a Parma"
-      : "Dinal Randika — Web designer and developer in Parma";
+      ? "Dinal Randika — Web designer e developer in Italia"
+      : "Dinal Randika — Web designer and developer in Italy";
   }, [lang]);
 
   useEffect(() => {
@@ -318,11 +318,28 @@ export function App() {
     const target = document.getElementById(hash);
     if (!target) return undefined;
     const root = document.documentElement;
-    const previousBehavior = root.style.scrollBehavior;
-    root.style.scrollBehavior = "auto";
-    target.scrollIntoView({ block: "start", behavior: "auto" });
-    root.style.scrollBehavior = previousBehavior;
-    return undefined;
+    let cancelled = false;
+    let secondFrame = 0;
+    const alignTarget = () => {
+      if (cancelled) return;
+      const headerHeight = Number.parseFloat(getComputedStyle(root).getPropertyValue("--header-height")) || 0;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+      const previousBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: "auto" });
+      root.style.scrollBehavior = previousBehavior;
+    };
+    const firstFrame = window.requestAnimationFrame(() => {
+      secondFrame = window.requestAnimationFrame(alignTarget);
+    });
+    document.fonts?.ready.then(alignTarget);
+    window.addEventListener("load", alignTarget, { once: true });
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(firstFrame);
+      if (secondFrame) window.cancelAnimationFrame(secondFrame);
+      window.removeEventListener("load", alignTarget);
+    };
   }, []);
 
   useEffect(() => {
@@ -511,7 +528,7 @@ export function App() {
         </div>
       </section>
 
-      <footer className="site-footer section-shell"><Brand /><p>{t.footer}</p><a href="#home" aria-label={t.backToTop}><ArrowUpRight size={19} /></a></footer>
+      <footer className="site-footer section-shell"><Brand /><p>{t.footer}</p><a className="footer-top-link" href="#home" aria-label={t.backToTop}><ArrowUpRight size={19} /></a></footer>
     </main>
   );
 }
