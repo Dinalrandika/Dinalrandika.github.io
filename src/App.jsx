@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight, Check, ExternalLink, Mail, Menu, MessageCircle, X } from "lucide-react";
 
 const projects = [
@@ -290,6 +290,8 @@ export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [openFaq, setOpenFaq] = useState(null);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
+  const scrollProgressRef = useRef(null);
   const t = content[lang];
 
   useEffect(() => {
@@ -340,6 +342,30 @@ export function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    let frameId = 0;
+    const updateScrollState = () => {
+      if (frameId) return;
+      frameId = window.requestAnimationFrame(() => {
+        const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = scrollableHeight > 0 ? Math.min(window.scrollY / scrollableHeight, 1) : 0;
+        if (scrollProgressRef.current) scrollProgressRef.current.style.transform = `scaleX(${progress})`;
+        const isScrolled = window.scrollY > 24;
+        setHeaderScrolled((current) => current === isScrolled ? current : isScrolled);
+        frameId = 0;
+      });
+    };
+
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    return () => {
+      window.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
+  }, []);
+
   const selectLanguage = (nextLanguage) => {
     setLang(nextLanguage);
     setMenuOpen(false);
@@ -349,7 +375,7 @@ export function App() {
 
   return (
     <main>
-      <header className="site-header">
+      <header className={headerScrolled ? "site-header site-header--scrolled" : "site-header"}>
         <Brand />
         <nav className={menuOpen ? "nav nav--open" : "nav"} aria-label={t.primaryNavLabel}>
           {t.nav.map((label, index) => {
@@ -364,6 +390,7 @@ export function App() {
           </div>
           <button className="menu-button" onClick={() => setMenuOpen((open) => !open)} aria-label={t.menuLabel} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button>
         </div>
+        <span className="scroll-progress" ref={scrollProgressRef} aria-hidden="true" />
       </header>
 
       <section id="home" className="hero" aria-labelledby="hero-title">
@@ -392,7 +419,7 @@ export function App() {
         <div className="section-heading reveal" data-reveal><p className="section-label">{t.projectsKicker}</p><h2 id="projects-title">{t.projectsTitle}</h2></div>
         <div className="project-list">
           {projects.map((project, index) => (
-            <article className="project reveal" data-reveal key={project.name}>
+            <article className="project project-reveal" data-reveal key={project.name}>
               <div className="project-copy">
                 <p className="project-index">{String(index + 1).padStart(2, "0")} / 06</p>
                 <p className="project-category">{project.category[lang]}</p>
@@ -466,7 +493,7 @@ export function App() {
                 >
                   <span>0{index + 1}</span><strong>{question}</strong><ArrowDown size={18} />
                 </button>
-                <div id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-button-${index}`} hidden={!isOpen}><p>{answer}</p></div>
+                <div className="faq-panel" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-button-${index}`} aria-hidden={!isOpen}><div><p>{answer}</p></div></div>
               </div>
             );
           })}
@@ -474,7 +501,7 @@ export function App() {
       </section>
 
       <section id="contact" className="contact" aria-labelledby="contact-title">
-        <div className="contact-inner section-shell">
+        <div className="contact-inner section-shell reveal contact-reveal" data-reveal>
           <p className="section-label">{t.contactKicker}</p><h2 id="contact-title">{t.contactTitle}</h2><p>{t.contactText}</p>
           <div className="contact-actions">
             <a className="light-button" href={`mailto:dinalrandika@icloud.com?subject=${encodeURIComponent(t.emailSubject)}`}><Mail size={18} />{t.email}</a>
