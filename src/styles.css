@@ -61,8 +61,8 @@ a:focus-visible, button:focus-visible {
 .site-header--scrolled { background: rgba(5, 8, 20, .94); border-bottom-color: rgba(143,184,255,.18); box-shadow: 0 12px 34px rgba(0,0,0,.22); }
 .scroll-progress { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; background: linear-gradient(90deg, var(--blue), var(--blue-soft)); transform: scaleX(0); transform-origin: left center; will-change: transform; }
 .brand { width: max-content; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; gap: 11px; font-size: .83rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.brand-mark { width: 31px; height: 31px; display: grid; place-items: center; border-radius: 8px; background: var(--blue); }
-.brand-mark img { width: 21px; height: 21px; object-fit: contain; filter: invert(1); }
+.brand-mark { width: 36px; height: 36px; display: grid; place-items: center; overflow: hidden; border-radius: 50%; background: var(--white); box-shadow: 0 0 0 1px rgba(143,184,255,.45), 0 5px 16px rgba(0,0,0,.18); }
+.brand-mark img { width: 34px; height: 34px; object-fit: contain; filter: none; }
 .nav { display: flex; align-items: center; gap: 34px; }
 .nav a { position: relative; min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 6px; color: #d7ddef; font-size: .75rem; font-weight: 600; transition: color var(--motion-fast) ease; }
 .nav a::after { content: ""; position: absolute; right: 6px; bottom: 5px; left: 6px; height: 1px; background: var(--blue-bright); transform: scaleX(0); transform-origin: right center; transition: transform var(--motion-fast) var(--motion-ease); }
@@ -301,7 +301,7 @@ a:focus-visible, button:focus-visible {
 
 .site-footer { min-height: 100px; display: grid; grid-template-columns: max-content 1fr 44px; align-items: center; gap: 30px; }
 .site-footer .brand { color: var(--ink); white-space: nowrap; }
-.site-footer .brand-mark img { filter: invert(1); }
+.site-footer .brand-mark img { filter: none; }
 .site-footer p { justify-self: center; margin: 0; color: var(--muted); font-size: .67rem; text-align: center; }
 .site-footer > .footer-top-link { justify-self: end; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; }
 

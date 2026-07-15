@@ -11,5 +11,6 @@ When implementing from a selected generated mock, treat that image as the source
 - Do not position the portfolio around Parma; present Dinal as available across Italy and remotely.
 - Keep prominent transition banners in the same dark charcoal/black family as the hero, with electric blue used as an accent.
 - Project media should use real mobile-site captures, a consistent crop, and identical dimensions across all six cards.
-- The footer must always show the code-mark logo and “Dinal Randika” together, including at mobile widths.
+- The footer must always show the current brand logo and “Dinal Randika” together, including at mobile widths.
 - Pricing must remain fully visible when switching languages and include a bilingual custom-quote option alongside the three fixed-price plans.
+- Use the supplied circular black-and-orange network mark as the portfolio logo in the header, footer, and favicon; do not restore the previous blue code icon.
