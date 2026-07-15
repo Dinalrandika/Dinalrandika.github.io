@@ -12,3 +12,4 @@ When implementing from a selected generated mock, treat that image as the source
 - Keep prominent transition banners in the same dark charcoal/black family as the hero, with electric blue used as an accent.
 - Project media should use real mobile-site captures, a consistent crop, and identical dimensions across all six cards.
 - The footer must always show the code-mark logo and “Dinal Randika” together, including at mobile widths.
+- Pricing must remain fully visible when switching languages and include a bilingual custom-quote option alongside the three fixed-price plans.

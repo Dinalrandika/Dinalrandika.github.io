@@ -238,9 +238,10 @@ a:focus-visible, button:focus-visible {
 .pricing { padding: 34px 0 var(--section-space); }
 .pricing-heading { align-items: start; }
 .pricing-heading > div > p { max-width: 630px; margin: 25px 0 0; color: #576176; font-size: .88rem; line-height: 1.65; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .price-card { position: relative; display: flex; flex-direction: column; min-height: 555px; padding: 30px; border: 1px solid #cbd4e3; border-radius: var(--radius-card); background: #fff; transition: opacity var(--motion-base) ease, transform 300ms var(--motion-ease), border-color 300ms ease, box-shadow 300ms ease; }
 .price-card--popular { color: var(--white); background: var(--navy-2); border-color: var(--blue); box-shadow: 0 24px 60px rgba(21,93,255,.16); }
+.price-card--custom { background: linear-gradient(145deg, #fff 0%, #f0f4ff 100%); border-color: rgba(21,93,255,.42); }
 .popular-label { position: absolute; right: 18px; top: 18px; padding: 6px 9px; border-radius: 999px; color: var(--white); background: var(--blue); font-size: .6rem; font-weight: 800; text-transform: uppercase; }
 .price-card h3 { margin: 0 0 13px; font-size: 1.45rem; }
 .price-card > p { min-height: 66px; margin: 0; color: var(--muted); font-size: .77rem; line-height: 1.55; }
@@ -304,6 +305,10 @@ a:focus-visible, button:focus-visible {
 .site-footer p { justify-self: center; margin: 0; color: var(--muted); font-size: .67rem; text-align: center; }
 .site-footer > .footer-top-link { justify-self: end; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; }
 
+@media (max-width: 1180px) {
+  .pricing-grid { grid-template-columns: 1fr 1fr; }
+}
+
 @media (max-width: 980px) {
   .section-shell { width: min(100% - 40px, 1320px); }
   .site-header { grid-template-columns: 1fr auto; padding: 0 20px; }
@@ -319,7 +324,7 @@ a:focus-visible, button:focus-visible {
   .demo-grid { grid-template-columns: 1.1fr .9fr; }
   .about { gap: 55px; }
   .pricing-grid { grid-template-columns: 1fr 1fr; }
-  .price-card:last-child { grid-column: 1 / -1; min-height: 500px; }
+  .price-card:last-child { grid-column: auto; }
   .faq { gap: 40px; }
 }
 

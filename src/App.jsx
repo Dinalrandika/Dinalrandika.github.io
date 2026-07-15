@@ -160,12 +160,14 @@ const content = {
     pricingIntro: "Prezzi di partenza realistici per un freelance. Il preventivo finale dipende da contenuti, integrazioni e tempistiche.",
     popular: "Più scelto",
     from: "Da",
+    customQuote: "Preventivo personalizzato",
     choose: "Parliamone",
-    planCtas: ["Valuta il Sito Essenziale", "Valuta il Sito Business", "Valuta l’Esperienza Premium"],
+    planCtas: ["Valuta il Sito Essenziale", "Valuta il Sito Business", "Valuta l’Esperienza Premium", "Richiedi un preventivo su misura"],
     plans: [
       ["Sito Essenziale", "€790", "Per una piccola attività che ha bisogno di una presenza chiara e professionale.", ["Homepage personalizzata", "Design responsive", "Contatto o WhatsApp", "SEO tecnico di base", "2 revisioni"]],
       ["Sito Business", "€1.290", "Per ristoranti, hotel, bar e servizi che devono presentare più contenuti e convertire.", ["Fino a 5 pagine", "Menu, servizi o camere", "Booking o moduli", "Italiano + inglese", "SEO base e analytics", "30 giorni di supporto"], true],
       ["Esperienza Premium", "€1.890", "Per un progetto più visivo, personalizzato e pronto a distinguersi.", ["Fino a 7 pagine", "Animazioni su misura", "CMS o contenuti dinamici", "Integrazioni avanzate", "Performance", "45 giorni di supporto"]],
+      ["Progetto su misura", "Su misura", "Per siti con esigenze che non entrano in un pacchetto standard.", ["Struttura e funzioni definite insieme", "Design e sviluppo su misura", "Integrazioni valutate nel preventivo", "Prezzo concordato prima di iniziare", "Supporto definito per il progetto"], false, true],
     ],
     pricingNote: "I prezzi sono indicativi. Possiamo modificare il pacchetto insieme durante il progetto; ogni variazione viene concordata prima della consegna finale.",
     faqKicker: "Domande frequenti",
@@ -228,12 +230,14 @@ const content = {
     pricingIntro: "Realistic freelancer starting prices. The final quote depends on content, integrations, and timeline.",
     popular: "Most popular",
     from: "From",
+    customQuote: "Custom pricing",
     choose: "Let’s talk",
-    planCtas: ["Discuss Essential Site", "Discuss Business Site", "Discuss Premium Experience"],
+    planCtas: ["Discuss Essential Site", "Discuss Business Site", "Discuss Premium Experience", "Request a custom quote"],
     plans: [
       ["Essential Site", "€790", "For a small business that needs a clear and professional online presence.", ["Custom homepage", "Responsive design", "Contact or WhatsApp", "Basic technical SEO", "2 revision rounds"]],
       ["Business Site", "€1,290", "For restaurants, hotels, bars, and services that need more content and stronger conversion paths.", ["Up to 5 pages", "Menus, services, or rooms", "Booking or forms", "Italian + English", "Basic SEO and analytics", "30 days of support"], true],
       ["Premium Experience", "€1,890", "For a more visual, tailored project designed to stand apart.", ["Up to 7 pages", "Custom animations", "CMS or dynamic content", "Advanced integrations", "Performance optimization", "45 days of support"]],
+      ["Custom Project", "Custom", "For websites with requirements that do not fit a standard package.", ["Scope and features planned together", "Tailored design and development", "Integrations reviewed in the quote", "Price agreed before work begins", "Support defined for the project"], false, true],
     ],
     pricingNote: "Prices are indicative. We can adjust the package together during the project; every change is agreed before final delivery.",
     faqKicker: "Frequently asked questions",
@@ -477,11 +481,11 @@ export function App() {
           <div><h2 id="pricing-title">{t.pricingTitle}</h2><p>{t.pricingIntro}</p></div>
         </div>
         <div className="pricing-grid">
-          {t.plans.map(([name, price, description, items, popular], index) => (
-            <article className={popular ? "price-card price-card--popular reveal" : "price-card reveal"} data-reveal style={{ "--reveal-delay": `${index * 55}ms` }} key={name}>
+          {t.plans.map(([name, price, description, items, popular, custom], index) => (
+            <article className={`price-card reveal${popular ? " price-card--popular" : ""}${custom ? " price-card--custom" : ""}`} data-reveal style={{ "--reveal-delay": `${index * 55}ms` }} key={`plan-${index}`}>
               {popular && <span className="popular-label">{t.popular}</span>}
               <h3>{name}</h3><p>{description}</p>
-              <div className="price"><span>{t.from}</span><strong>{price}</strong></div>
+              <div className="price"><span>{custom ? t.customQuote : t.from}</span><strong>{price}</strong></div>
               <ul>{items.map((item) => <li key={item}><Check size={16} />{item}</li>)}</ul>
               <a href="#contact">{t.planCtas[index]} <ArrowRight size={16} /></a>
             </article>
