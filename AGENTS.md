@@ -9,8 +9,8 @@ When implementing from a selected generated mock, treat that image as the source
 ## Durable portfolio direction
 
 - Do not position the portfolio around Parma; present Dinal as available across Italy and remotely.
-- Keep prominent transition banners in the same dark charcoal/black family as the hero, with electric blue used as an accent.
+- Use the selected Figma community portfolio as the visual source of truth: dark charcoal surfaces, compact cyan accents, centered editorial headings, restrained cards, and generous but controlled spacing.
 - Project media should use real mobile-site captures, a consistent crop, and identical dimensions across all six cards.
-- The footer must always show the current brand logo and “Dinal Randika” together, including at mobile widths.
-- Pricing must remain fully visible when switching languages and include a bilingual custom-quote option alongside the three fixed-price plans.
-- Use the supplied circular black-and-orange network mark as the portfolio logo in the header, footer, and favicon; do not restore the previous blue code icon.
+- Keep Italian and English support, the six verified live projects, and direct email and WhatsApp contact paths.
+- Do not include pricing in the Figma-based portfolio redesign.
+- Use “Dinal” as a typographic wordmark in the header and footer; do not use an image logo in the visible interface.
