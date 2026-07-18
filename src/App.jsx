@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -284,6 +284,17 @@ function Wordmark() {
   return <a className="wordmark" href="#home" aria-label="Dinal home">Dinal</a>;
 }
 
+function RollLabel({ children }) {
+  return (
+    <span className="roll-label">
+      <span className="roll-label-stack">
+        <span>{children}</span>
+        <span aria-hidden="true">{children}</span>
+      </span>
+    </span>
+  );
+}
+
 function SectionHeading({ title, subtitle, id }) {
   return (
     <div className="section-heading reveal" data-reveal>
@@ -315,6 +326,7 @@ function ProjectCard({ project, index, lang, labels }) {
             <h3>{project.name}</h3>
           </div>
           <a className="project-arrow" href={project.url} target="_blank" rel="noreferrer" aria-label={`${labels.visit}: ${project.name}`}>
+            <span className="project-arrow-label" aria-hidden="true">{labels.visit}</span>
             <ArrowUpRight size={19} />
           </a>
         </div>
@@ -368,12 +380,14 @@ export function App() {
     return () => observer.disconnect();
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const hash = window.location.hash.slice(1);
     const target = hash ? document.getElementById(hash) : null;
     if (!target) return undefined;
-    const frame = requestAnimationFrame(() => target.scrollIntoView({ block: "start", behavior: "auto" }));
-    return () => cancelAnimationFrame(frame);
+    const timer = window.setTimeout(() => {
+      target.scrollIntoView({ block: "start", behavior: "instant" });
+    }, 80);
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -391,7 +405,7 @@ export function App() {
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     targets.forEach((target) => observer.observe(target));
     return () => observer.disconnect();
-  }, [activeFilter]);
+  }, [activeFilter, lang]);
 
   useEffect(() => {
     const onScroll = () => setHeaderScrolled(window.scrollY > 18);
@@ -432,7 +446,7 @@ export function App() {
             <button className={lang === "it" ? "active" : ""} aria-pressed={lang === "it"} onClick={() => { setLang("it"); closeMenu(); }}>IT</button>
             <button className={lang === "en" ? "active" : ""} aria-pressed={lang === "en"} onClick={() => { setLang("en"); closeMenu(); }}>EN</button>
           </div>
-          <a className={activeSection === "contact" ? "header-contact active" : "header-contact"} href="#contact">{t.contactNav}</a>
+          <a className={activeSection === "contact" ? "header-contact motion-cta active" : "header-contact motion-cta"} href="#contact"><RollLabel>{t.contactNav}</RollLabel></a>
           <button ref={menuButtonRef} className="menu-button" type="button" aria-label={t.menuLabel} aria-expanded={menuOpen} aria-controls="site-navigation" onClick={() => setMenuOpen((open) => !open)}>
             {menuOpen ? <X size={21} /> : <Menu size={21} />}
           </button>
@@ -449,8 +463,8 @@ export function App() {
           <p className="hero-role hero-enter hero-enter--3">{t.heroRole}</p>
           <p className="hero-copy hero-enter hero-enter--4"><strong>{t.heroStatement}</strong> {t.heroText}</p>
           <div className="hero-actions hero-enter hero-enter--5">
-            <a className="button button--outline" href="#contact">{t.start}<ArrowRight size={17} /></a>
-            <a className="text-button" href="#projects">{t.workCta}<ArrowDown size={16} /></a>
+            <a className="button button--outline motion-cta" href="#contact"><RollLabel>{t.start}</RollLabel><ArrowRight size={17} /></a>
+            <a className="text-button motion-cta motion-cta--down" href="#projects"><RollLabel>{t.workCta}</RollLabel><ArrowDown size={16} /></a>
           </div>
           <p className="hero-proof hero-enter hero-enter--6">{t.proof}</p>
         </div>
@@ -462,7 +476,7 @@ export function App() {
         <div className="about-copy reveal" data-reveal>
           <p className="about-lead">{t.aboutLead}</p>
           {t.aboutText.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-          <a className="button button--outline" href="#projects">{t.aboutCta}<ArrowRight size={17} /></a>
+          <a className="button button--outline motion-cta" href="#projects"><RollLabel>{t.aboutCta}</RollLabel><ArrowRight size={17} /></a>
         </div>
       </section>
 
@@ -511,7 +525,7 @@ export function App() {
             </select>
             <label htmlFor="message">{t.form.message}</label>
             <textarea id="message" name="message" rows="6" placeholder={t.form.messagePlaceholder} required />
-            <button className="form-submit" type="submit">{t.form.submit}<ArrowUpRight size={18} /></button>
+            <button className="form-submit motion-cta motion-cta--diagonal" type="submit"><RollLabel>{t.form.submit}</RollLabel><ArrowUpRight size={18} /></button>
             <p className="form-note">{t.form.note}</p>
           </form>
           <aside className="contact-direct reveal" data-reveal>
@@ -521,7 +535,7 @@ export function App() {
             <a href={whatsappHref} target="_blank" rel="noreferrer"><MessageCircle size={18} />+39 339 351 5742</a>
             <p>LinkedIn</p>
             <a href="https://linkedin.com/in/dinal-randika-88038b219" target="_blank" rel="noreferrer"><BriefcaseBusiness size={18} />Dinal Randika</a>
-            <a className="whatsapp-button" href={whatsappHref} target="_blank" rel="noreferrer">{t.whatsapp}<ArrowRight size={17} /></a>
+            <a className="whatsapp-button motion-cta" href={whatsappHref} target="_blank" rel="noreferrer"><RollLabel>{t.whatsapp}</RollLabel><ArrowRight size={17} /></a>
           </aside>
         </div>
       </section>
@@ -529,7 +543,7 @@ export function App() {
       <footer className="site-footer">
         <div className="footer-cta section-shell">
           <h2>{t.footerCta}</h2>
-          <a href="mailto:dinalrandika@icloud.com">{t.footerEmail}<ArrowUpRight size={19} /></a>
+          <a className="motion-cta motion-cta--diagonal" href="mailto:dinalrandika@icloud.com"><RollLabel>{t.footerEmail}</RollLabel><ArrowUpRight size={19} /></a>
         </div>
         <div className="footer-bottom section-shell">
           <Wordmark />

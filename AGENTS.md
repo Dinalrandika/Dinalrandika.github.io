@@ -14,3 +14,5 @@ When implementing from a selected generated mock, treat that image as the source
 - Keep Italian and English support, the six verified live projects, and direct email and WhatsApp contact paths.
 - Do not include pricing in the Figma-based portfolio redesign.
 - Use “Dinal” as a typographic wordmark in the header and footer; do not use an image logo in the visible interface.
+- Keep interaction polish restrained and Axion-inspired: accessible vertical label rolls, small arrow shifts, maximum 1.02 project-image scale, 3–4px card lifts, and no continuous or dependency-heavy animation.
+- Hover motion must be limited to fine pointers, mirrored with keyboard focus where appropriate, and fully neutralized by `prefers-reduced-motion`.
