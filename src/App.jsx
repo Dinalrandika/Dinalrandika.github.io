@@ -3,15 +3,11 @@ import {
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
-  BriefcaseBusiness,
   CalendarCheck2,
-  Code2,
   ExternalLink,
   Globe2,
   Layers3,
-  Mail,
   Menu,
-  MessageCircle,
   MonitorSmartphone,
   ShoppingBag,
   Utensils,
@@ -61,7 +57,7 @@ const projects = [
   },
   {
     name: "Piserchia Eventi",
-    url: "https://bewildered-line-651237.framer.app/",
+    url: "https://piserchiaeventi.com/",
     image: "/assets/showcase-piserchia.avif",
     group: "events",
     alt: {
@@ -293,6 +289,17 @@ function RollLabel({ children }) {
       </span>
     </span>
   );
+}
+
+const brandIconPaths = {
+  github: "/assets/icon-github.svg",
+  linkedin: "/assets/icon-linkedin.svg",
+  mail: "/assets/icon-mail.svg",
+  whatsapp: "/assets/icon-whatsapp.svg",
+};
+
+function BrandIcon({ name, className = "" }) {
+  return <img className={`brand-icon brand-icon--${name} ${className}`.trim()} src={brandIconPaths[name]} alt="" aria-hidden="true" width="20" height="20" />;
 }
 
 function SectionHeading({ title, subtitle, id }) {
@@ -531,12 +538,12 @@ export function App() {
           </form>
           <aside className="contact-direct reveal" data-reveal>
             <p>{t.email}</p>
-            <a href="mailto:dinalrandika@icloud.com"><Mail size={18} />dinalrandika@icloud.com</a>
+            <a href="mailto:dinalrandika@icloud.com"><BrandIcon name="mail" />dinalrandika@icloud.com</a>
             <p>WhatsApp</p>
-            <a href={whatsappHref} target="_blank" rel="noreferrer"><MessageCircle size={18} />+39 339 351 5742</a>
+            <a href={whatsappHref} target="_blank" rel="noreferrer"><BrandIcon name="whatsapp" />+39 339 351 5742</a>
             <p>LinkedIn</p>
-            <a href="https://linkedin.com/in/dinal-randika-88038b219" target="_blank" rel="noreferrer"><BriefcaseBusiness size={18} />Dinal Randika</a>
-            <a className="whatsapp-button motion-cta" href={whatsappHref} target="_blank" rel="noreferrer"><RollLabel>{t.whatsapp}</RollLabel><ArrowRight size={17} /></a>
+            <a href="https://linkedin.com/in/dinal-randika-88038b219" target="_blank" rel="noreferrer"><BrandIcon name="linkedin" />Dinal Randika</a>
+            <a className="whatsapp-button motion-cta" href={whatsappHref} target="_blank" rel="noreferrer"><BrandIcon name="whatsapp" /><RollLabel>{t.whatsapp}</RollLabel><ArrowRight size={17} /></a>
           </aside>
         </div>
       </section>
@@ -544,14 +551,14 @@ export function App() {
       <footer className="site-footer">
         <div className="footer-cta section-shell">
           <h2>{t.footerCta}</h2>
-          <a className="motion-cta motion-cta--diagonal" href="mailto:dinalrandika@icloud.com"><RollLabel>{t.footerEmail}</RollLabel><ArrowUpRight size={19} /></a>
+          <a className="motion-cta motion-cta--diagonal" href="mailto:dinalrandika@icloud.com"><BrandIcon name="mail" /><RollLabel>{t.footerEmail}</RollLabel><ArrowUpRight size={19} /></a>
         </div>
         <div className="footer-bottom section-shell">
           <Wordmark />
           <p>© {new Date().getFullYear()} Dinal Randika · {t.footerNote}</p>
           <div className="social-links">
-            <a href="https://github.com/Dinalrandika" target="_blank" rel="noreferrer" aria-label="GitHub"><Code2 size={18} /></a>
-            <a href="https://linkedin.com/in/dinal-randika-88038b219" target="_blank" rel="noreferrer" aria-label="LinkedIn"><BriefcaseBusiness size={18} /></a>
+            <a href="https://github.com/Dinalrandika" target="_blank" rel="noreferrer" aria-label="GitHub"><BrandIcon name="github" /></a>
+            <a href="https://linkedin.com/in/dinal-randika-88038b219" target="_blank" rel="noreferrer" aria-label="LinkedIn"><BrandIcon name="linkedin" /></a>
             <a href="#home" aria-label={t.backToTop}><ArrowUpRight size={18} /></a>
           </div>
         </div>
