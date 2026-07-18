@@ -100,11 +100,11 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   color: var(--text);
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Oleo Script", cursive;
   font-size: 2rem;
-  font-style: italic;
-  font-weight: 600;
-  letter-spacing: -.055em;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
   transition: color 240ms var(--roll-ease);
 }
 
@@ -113,7 +113,7 @@ textarea:focus-visible {
 .nav {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 30px;
 }
 
 .nav a {
@@ -123,9 +123,9 @@ textarea:focus-visible {
   align-items: center;
   justify-content: center;
   color: #c7c7ce;
-  font-family: Poppins, Inter, sans-serif;
-  font-size: .74rem;
-  font-weight: 500;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
   transition: color 180ms ease;
 }
 
@@ -160,6 +160,8 @@ textarea:focus-visible {
 }
 
 .language-switch {
+  --language-button-size: 44px;
+  position: relative;
   display: flex;
   align-items: center;
   padding: 2px;
@@ -167,22 +169,42 @@ textarea:focus-visible {
   border-radius: 999px;
 }
 
+.language-indicator {
+  position: absolute;
+  z-index: 0;
+  top: 2px;
+  left: 2px;
+  width: var(--language-button-size);
+  height: var(--language-button-size);
+  border-radius: 50%;
+  background: var(--text);
+  transform: translateX(0);
+  transition: transform 260ms var(--roll-ease), background 220ms ease;
+}
+
+.language-indicator--en { transform: translateX(var(--language-button-size)); }
+
 .language-switch button {
-  width: 44px;
-  height: 44px;
+  position: relative;
+  z-index: 1;
+  width: var(--language-button-size);
+  height: var(--language-button-size);
   padding: 0;
   color: #8f8f98;
   border: 0;
   border-radius: 999px;
   background: transparent;
-  font-size: .64rem;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: .68rem;
   font-weight: 700;
+  transition: color 220ms ease, transform 150ms var(--roll-ease);
 }
 
 .language-switch button.active {
   color: #0b0b0b;
-  background: var(--text);
 }
+
+.language-switch button:active { transform: scale(.94); }
 
 .header-contact {
   min-width: 112px;
@@ -194,10 +216,10 @@ textarea:focus-visible {
   color: var(--text);
   border: 1px solid var(--accent);
   border-radius: 999px;
-  font-family: Poppins, Inter, sans-serif;
-  font-size: .72rem;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: .9375rem;
   font-weight: 500;
-  transition: color 240ms ease, background 240ms ease, box-shadow 240ms ease;
+  transition: color 240ms ease, background 240ms ease, box-shadow 240ms ease, transform 150ms var(--roll-ease);
 }
 
 .header-contact.active,
@@ -217,6 +239,20 @@ textarea:focus-visible {
   border: 1px solid var(--line);
   border-radius: 50%;
   background: transparent;
+  transition: color 200ms ease, border-color 200ms ease, background 200ms ease, transform 150ms var(--roll-ease);
+}
+
+.menu-button[aria-expanded="true"] {
+  color: #111;
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.menu-button svg { animation: menu-icon-in 180ms var(--roll-ease) both; }
+
+@keyframes menu-icon-in {
+  from { opacity: 0; transform: rotate(-35deg) scale(.82); }
+  to { opacity: 1; transform: rotate(0) scale(1); }
 }
 
 .hero {
@@ -256,8 +292,8 @@ textarea:focus-visible {
 }
 
 .hero-portrait {
-  width: 164px;
-  height: 164px;
+  width: 202px;
+  height: 202px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, .14);
   border-radius: 50%;
@@ -276,9 +312,9 @@ textarea:focus-visible {
 .hero-name {
   margin: 24px 0 4px;
   font-family: Poppins, Inter, sans-serif;
-  font-size: clamp(3rem, 5.3vw, 4.6rem);
+  font-size: clamp(3.25rem, 4.4vw, 3.9375rem);
   line-height: 1.05;
-  letter-spacing: -.065em;
+  letter-spacing: -.06em;
   font-weight: 700;
 }
 
@@ -289,7 +325,7 @@ textarea:focus-visible {
   background-clip: text;
   -webkit-background-clip: text;
   font-family: Poppins, Inter, sans-serif;
-  font-size: clamp(1.05rem, 2vw, 1.55rem);
+  font-size: clamp(1.1rem, 2vw, 1.625rem);
   line-height: 1.3;
   font-weight: 600;
 }
@@ -299,8 +335,9 @@ textarea:focus-visible {
   margin: 30px 0 0;
   color: #c9c9ce;
   font-family: Poppins, Inter, sans-serif;
-  font-size: clamp(.94rem, 1.35vw, 1.08rem);
-  line-height: 1.8;
+  font-size: clamp(1rem, 1.4vw, 1.1875rem);
+  line-height: 1.58;
+  font-weight: 500;
 }
 
 .hero-copy strong {
@@ -325,8 +362,8 @@ textarea:focus-visible {
   gap: 10px;
   padding: 0 23px;
   border-radius: 999px;
-  font-family: Poppins, Inter, sans-serif;
-  font-size: .74rem;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: .9375rem;
   font-weight: 500;
 }
 
@@ -334,7 +371,7 @@ textarea:focus-visible {
   color: var(--text);
   border: 1px solid var(--accent);
   background: rgba(10, 10, 10, .12);
-  transition: color 240ms ease, background 240ms ease, box-shadow 240ms ease;
+  transition: color 240ms ease, background 240ms ease, box-shadow 240ms ease, transform 150ms var(--roll-ease);
 }
 
 .button--outline:focus-visible {
@@ -385,11 +422,14 @@ textarea:focus-visible {
   align-items: center;
   gap: 9px;
   color: #c8c8cd;
-  font-size: .74rem;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: .82rem;
   font-weight: 600;
   border-bottom: 1px solid transparent;
-  transition: color 180ms ease, border-color 180ms ease;
+  transition: color 180ms ease, border-color 180ms ease, transform 150ms var(--roll-ease);
 }
+
+.motion-cta:active { transform: translateY(1px) scale(.985); }
 
 .text-button:focus-visible {
   color: var(--text);
@@ -423,15 +463,15 @@ textarea:focus-visible {
 .hero-enter {
   opacity: 0;
   transform: translateY(13px);
-  animation: hero-enter 540ms var(--ease) forwards;
+  animation: hero-enter 400ms var(--ease) forwards;
 }
 
-.hero-enter--1 { animation-delay: 40ms; }
-.hero-enter--2 { animation-delay: 95ms; }
-.hero-enter--3 { animation-delay: 150ms; }
-.hero-enter--4 { animation-delay: 205ms; }
-.hero-enter--5 { animation-delay: 260ms; }
-.hero-enter--6 { animation-delay: 315ms; }
+.hero-enter--1 { animation-delay: 0ms; }
+.hero-enter--2 { animation-delay: 45ms; }
+.hero-enter--3 { animation-delay: 90ms; }
+.hero-enter--4 { animation-delay: 135ms; }
+.hero-enter--5 { animation-delay: 180ms; }
+.hero-enter--6 { animation-delay: 225ms; }
 
 @keyframes hero-enter {
   to { opacity: 1; transform: translateY(0); }
@@ -457,9 +497,9 @@ textarea:focus-visible {
 
 .section-heading h2 {
   margin: 0;
-  font-size: clamp(2.55rem, 4.4vw, 3.55rem);
-  line-height: 1.06;
-  letter-spacing: -.055em;
+  font-size: clamp(2.5rem, 3.4vw, 2.8125rem);
+  line-height: 1.2;
+  letter-spacing: -.03em;
   font-weight: 800;
 }
 
@@ -469,7 +509,8 @@ textarea:focus-visible {
   background: linear-gradient(95deg, var(--accent), #f1f1f1 86%);
   background-clip: text;
   -webkit-background-clip: text;
-  font-size: .77rem;
+  font-family: Poppins, Inter, sans-serif;
+  font-size: .9rem;
   font-weight: 600;
   letter-spacing: -.01em;
 }
@@ -537,7 +578,7 @@ textarea:focus-visible {
 
 .service-card h3 {
   margin: 28px 0 13px;
-  font-size: 1rem;
+  font-size: 1.08rem;
   line-height: 1.35;
   font-weight: 600;
 }
@@ -545,7 +586,7 @@ textarea:focus-visible {
 .service-card p {
   margin: 0;
   color: #b5b5bd;
-  font-size: .8rem;
+  font-size: .88rem;
   line-height: 1.72;
 }
 
@@ -572,16 +613,20 @@ textarea:focus-visible {
 }
 
 .project-filters button {
-  min-width: 72px;
-  min-height: 44px;
-  padding: 0 16px;
+  min-width: 132px;
+  min-height: 50px;
+  padding: 0 20px;
   color: #a9a9b0;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: transparent;
-  font-size: .7rem;
-  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: .78rem;
+  font-weight: 500;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 150ms var(--roll-ease);
 }
+
+.project-filters button:active { transform: scale(.97); }
 
 .project-filters button.active,
 .project-filters button:focus-visible {
@@ -669,7 +714,7 @@ textarea:focus-visible {
 
 .project-card h3 {
   margin: 6px 0 0;
-  font-size: 1.07rem;
+  font-size: 1.16rem;
   line-height: 1.35;
   font-weight: 600;
 }
@@ -723,7 +768,7 @@ textarea:focus-visible {
   min-height: 72px;
   margin: 18px 0 0;
   color: #b9b9c0;
-  font-size: .75rem;
+  font-size: .82rem;
   line-height: 1.65;
 }
 
@@ -733,7 +778,7 @@ textarea:focus-visible {
   padding-top: 14px;
   color: #a4a4ac;
   border-top: 1px solid var(--line);
-  font-size: .71rem;
+  font-size: .76rem;
   line-height: 1.62;
 }
 
@@ -770,7 +815,8 @@ textarea:focus-visible {
   gap: 7px;
   margin-top: 14px;
   color: var(--text);
-  font-size: .69rem;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: .75rem;
   font-weight: 600;
 }
 
@@ -839,9 +885,10 @@ textarea:focus-visible {
   border: 1px solid var(--text);
   border-radius: 9px;
   background: var(--text);
-  font-size: .78rem;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: .84rem;
   font-weight: 700;
-  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 150ms var(--roll-ease);
 }
 
 .form-submit:focus-visible {
@@ -899,9 +946,10 @@ textarea:focus-visible {
   color: #101010;
   border-radius: 999px;
   background: var(--accent);
-  font-size: .68rem;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: .75rem;
   font-weight: 700;
-  transition: background 240ms ease, box-shadow 240ms ease;
+  transition: background 240ms ease, box-shadow 240ms ease, transform 150ms var(--roll-ease);
 }
 
 .whatsapp-button:focus-visible {
@@ -939,9 +987,10 @@ textarea:focus-visible {
   color: #0c0c0c;
   border-radius: 999px;
   background: var(--text);
-  font-size: .69rem;
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: .78rem;
   font-weight: 700;
-  transition: color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+  transition: color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 150ms var(--roll-ease);
 }
 
 .footer-cta > a:focus-visible {
@@ -1081,7 +1130,7 @@ textarea:focus-visible {
     position: absolute;
     top: calc(var(--header-height) - 1px);
     right: 24px;
-    display: none;
+    display: flex;
     width: 248px;
     align-items: stretch;
     padding: 10px;
@@ -1091,10 +1140,22 @@ textarea:focus-visible {
     box-shadow: 0 22px 60px rgba(0, 0, 0, .42);
     flex-direction: column;
     gap: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px) scale(.98);
+    transform-origin: top right;
+    transition: opacity 180ms ease, transform 220ms var(--ease), visibility 0s linear 220ms;
   }
 
-  .nav--open { display: flex; animation: menu-in 220ms var(--ease) both; }
-  .nav a { justify-content: flex-start; padding-inline: 13px; }
+  .nav--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    transition-delay: 0s;
+  }
+  .nav a { min-height: 48px; justify-content: flex-start; padding-inline: 13px; font-size: .92rem; }
   .nav a::after { right: 13px; left: 13px; }
   .nav-mobile-contact { display: inline-flex !important; color: var(--accent) !important; }
   .header-contact { display: none; }
@@ -1103,11 +1164,6 @@ textarea:focus-visible {
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .project-topline { padding-right: 140px; }
   .contact-layout { grid-template-columns: minmax(0, 1.35fr) minmax(245px, .8fr); }
-}
-
-@keyframes menu-in {
-  from { opacity: 0; transform: translateY(-8px) scale(.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @media (max-width: 720px) {
@@ -1119,7 +1175,6 @@ textarea:focus-visible {
   .section-shell { width: calc(100% - 32px); }
   .site-header { padding-inline: 16px; }
   .wordmark { font-size: 1.8rem; }
-  .language-switch button { width: 40px; height: 40px; }
   .nav { right: 16px; left: 16px; width: auto; }
 
   .hero {
@@ -1135,17 +1190,17 @@ textarea:focus-visible {
   }
 
   .hero-content { padding-top: 0; }
-  .hero-portrait { width: 132px; height: 132px; }
-  .hero-name { margin-top: 22px; font-size: clamp(2.7rem, 14vw, 4rem); }
+  .hero-portrait { width: 148px; height: 148px; }
+  .hero-name { margin-top: 22px; font-size: clamp(2.55rem, 12vw, 3.35rem); }
   .hero-role { font-size: 1.03rem; }
-  .hero-copy { max-width: 460px; margin-top: 24px; font-size: .86rem; line-height: 1.72; }
+  .hero-copy { max-width: 460px; margin-top: 24px; font-size: .92rem; line-height: 1.68; }
   .hero-actions { width: 100%; gap: 8px; margin-top: 27px; }
   .hero-actions .button { width: 100%; }
   .hero-actions .text-button { justify-content: center; padding-inline: 18px; }
   .hero-proof { max-width: 330px; font-size: .55rem; }
   .scroll-cue { bottom: 18px; }
 
-  .section-heading h2 { font-size: clamp(2.4rem, 12vw, 3.25rem); }
+  .section-heading h2 { font-size: clamp(2.35rem, 10vw, 2.8125rem); }
   .about-copy { margin-top: 48px; }
   .about-copy p { font-size: .85rem; }
   .about-copy .about-lead { font-size: 1.24rem; }
@@ -1208,12 +1263,10 @@ textarea:focus-visible {
 }
 
 @media (max-width: 390px) {
-  .language-switch button { width: 36px; height: 40px; }
   .header-actions { gap: 8px; }
   .project-filters button { min-width: 0; padding-inline: 13px; }
   .project-body { padding: 17px; }
   .contact-direct { padding: 20px; }
-  .social-links a { width: 42px; height: 42px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1247,6 +1300,12 @@ textarea:focus-visible {
   .project-link:focus-visible svg,
   .social-links a:hover svg,
   .social-links a:focus-visible svg {
+    transform: none !important;
+  }
+
+  .motion-cta:active,
+  .language-switch button:active,
+  .project-filters button:active {
     transform: none !important;
   }
 

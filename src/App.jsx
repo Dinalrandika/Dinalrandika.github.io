@@ -443,6 +443,7 @@ export function App() {
         </nav>
         <div className="header-actions">
           <div className="language-switch" aria-label={t.languageLabel}>
+            <span className={lang === "en" ? "language-indicator language-indicator--en" : "language-indicator"} aria-hidden="true" />
             <button className={lang === "it" ? "active" : ""} aria-pressed={lang === "it"} onClick={() => { setLang("it"); closeMenu(); }}>IT</button>
             <button className={lang === "en" ? "active" : ""} aria-pressed={lang === "en"} onClick={() => { setLang("en"); closeMenu(); }}>EN</button>
           </div>
@@ -505,7 +506,7 @@ export function App() {
           ))}
         </div>
         <div className="project-grid">
-          {filteredProjects.map((project, index) => <ProjectCard key={project.name} project={project} index={index} lang={lang} labels={t} />)}
+          {filteredProjects.map((project, index) => <ProjectCard key={`${activeFilter}-${project.name}`} project={project} index={index} lang={lang} labels={t} />)}
         </div>
       </section>
 
