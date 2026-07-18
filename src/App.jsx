@@ -277,7 +277,11 @@ const content = {
 const sectionIds = ["home", "about", "services", "projects", "contact"];
 
 function Wordmark() {
-  return <a className="wordmark" href="#home" aria-label="Dinal home">Dinal</a>;
+  return (
+    <a className="wordmark" href="#home" aria-label="Dinal home">
+      <span className="wordmark__art" aria-hidden="true" />
+    </a>
+  );
 }
 
 function RollLabel({ children }) {

@@ -100,12 +100,16 @@ textarea:focus-visible {
   display: inline-flex;
   align-items: center;
   color: var(--text);
-  font-family: "Oleo Script", cursive;
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
   transition: color 240ms var(--roll-ease);
+}
+
+.wordmark__art {
+  display: block;
+  width: 106px;
+  aspect-ratio: 960 / 448;
+  background: currentColor;
+  -webkit-mask: url("/assets/dinal-wordmark-v2.png") center / contain no-repeat;
+  mask: url("/assets/dinal-wordmark-v2.png") center / contain no-repeat;
 }
 
 .wordmark:focus-visible { color: var(--accent); }
@@ -1206,7 +1210,7 @@ textarea:focus-visible {
 
   .section-shell { width: calc(100% - 32px); }
   .site-header { padding-inline: 16px; }
-  .wordmark { font-size: 1.8rem; }
+  .wordmark__art { width: 98px; }
   .nav { right: 16px; left: 16px; width: auto; }
 
   .hero {
