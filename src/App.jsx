@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   ArrowDown,
   ArrowRight,
@@ -13,6 +16,8 @@ import {
   Utensils,
   X,
 } from "lucide-react";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const projects = [
   {
@@ -198,7 +203,7 @@ const content = {
       subject: "Richiesta progetto web",
     },
     email: "Email diretta",
-    whatsapp: "Scrivimi su WhatsApp",
+    whatsapp: "Apri WhatsApp",
     whatsappMessage: "Ciao Dinal, vorrei parlare del sito web della mia attività. Il nome dell’attività è: ",
     footerCta: "Lavoriamo insieme —",
     footerEmail: "Inviami un’email",
@@ -264,7 +269,7 @@ const content = {
       subject: "Website project enquiry",
     },
     email: "Direct email",
-    whatsapp: "Message me on WhatsApp",
+    whatsapp: "Open WhatsApp",
     whatsappMessage: "Hi Dinal, I would like to discuss a website for my business. The business name is: ",
     footerCta: "Let’s work together —",
     footerEmail: "Send me an email",
@@ -357,6 +362,9 @@ export function App() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const menuButtonRef = useRef(null);
+  const heroRef = useRef(null);
+  const heroAmbientRef = useRef(null);
+  const heroGlowRef = useRef(null);
   const t = content[lang];
 
   const filteredProjects = activeFilter === "all"
@@ -425,6 +433,64 @@ export function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useGSAP(() => {
+    const hero = heroRef.current;
+    const ambient = heroAmbientRef.current;
+    const glow = heroGlowRef.current;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const precisePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (!hero || !ambient || !glow || reduceMotion || !precisePointer) return undefined;
+
+    let bounds = hero.getBoundingClientRect();
+    const updateBounds = () => { bounds = hero.getBoundingClientRect(); };
+    const moveX = gsap.quickTo(glow, "x", { duration: 0.62, ease: "power3.out" });
+    const moveY = gsap.quickTo(glow, "y", { duration: 0.62, ease: "power3.out" });
+    const fade = gsap.quickTo(glow, "opacity", { duration: 0.36, ease: "power2.out" });
+
+    gsap.set(glow, {
+      x: bounds.width * 0.5,
+      y: Math.min(bounds.height * 0.4, 390),
+      xPercent: -50,
+      yPercent: -50,
+      opacity: 0.56,
+    });
+
+    const onPointerEnter = () => {
+      updateBounds();
+      fade(0.82);
+    };
+    const onPointerMove = (event) => {
+      moveX(event.clientX - bounds.left);
+      moveY(event.clientY - bounds.top);
+    };
+    const onPointerLeave = () => fade(0.42);
+
+    hero.addEventListener("pointerenter", onPointerEnter);
+    hero.addEventListener("pointermove", onPointerMove, { passive: true });
+    hero.addEventListener("pointerleave", onPointerLeave);
+    window.addEventListener("resize", updateBounds, { passive: true });
+
+    gsap.to(ambient, {
+      yPercent: 7,
+      opacity: 0.62,
+      ease: "none",
+      scrollTrigger: {
+        trigger: hero,
+        start: "top top",
+        end: "bottom top",
+        scrub: 0.65,
+      },
+    });
+
+    return () => {
+      hero.removeEventListener("pointerenter", onPointerEnter);
+      hero.removeEventListener("pointermove", onPointerMove);
+      hero.removeEventListener("pointerleave", onPointerLeave);
+      window.removeEventListener("resize", updateBounds);
+    };
+  }, { scope: heroRef });
+
   const closeMenu = () => setMenuOpen(false);
   const whatsappHref = `https://wa.me/393393515742?text=${encodeURIComponent(t.whatsappMessage)}`;
 
@@ -443,7 +509,7 @@ export function App() {
   };
 
   return (
-    <main>
+    <main className="portfolio-page">
       <header className={headerScrolled ? "site-header site-header--scrolled" : "site-header"}>
         <Wordmark />
         <nav id="site-navigation" className={menuOpen ? "nav nav--open" : "nav"} aria-label={t.primaryNavLabel}>
@@ -465,7 +531,11 @@ export function App() {
         </div>
       </header>
 
-      <section id="home" className="hero" aria-labelledby="hero-title">
+      <section ref={heroRef} id="home" className="hero" aria-labelledby="hero-title">
+        <div ref={heroAmbientRef} className="hero-pointer-ambient" aria-hidden="true">
+          <span ref={heroGlowRef} className="hero-pointer-ambient__glow" />
+          <span className="hero-pointer-ambient__wash" />
+        </div>
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-content section-shell">
           <div className="hero-portrait hero-enter hero-enter--1">

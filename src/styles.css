@@ -48,6 +48,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.portfolio-page {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 button,
 input,
 select,
@@ -270,8 +276,40 @@ textarea:focus-visible {
     linear-gradient(180deg, #1a1a1a 0%, #191919 72%, #181818 100%);
 }
 
+.hero-pointer-ambient {
+  position: absolute;
+  z-index: 0;
+  inset: -8%;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: .86;
+  will-change: transform, opacity;
+}
+
+.hero-pointer-ambient__glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(420px, 48vw, 720px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: .56;
+  background: radial-gradient(circle, rgba(79, 195, 247, .19) 0%, rgba(79, 195, 247, .075) 32%, transparent 70%);
+  filter: blur(9px);
+  will-change: transform, opacity;
+}
+
+.hero-pointer-ambient__wash {
+  position: absolute;
+  inset: 10% 5% 0;
+  background:
+    radial-gradient(circle at 72% 28%, rgba(79, 195, 247, .065), transparent 29%),
+    radial-gradient(circle at 28% 66%, rgba(169, 226, 251, .035), transparent 34%);
+}
+
 .hero-grid {
   position: absolute;
+  z-index: 1;
   width: min(78vw, 1020px);
   height: 720px;
   top: 118px;
@@ -392,6 +430,9 @@ textarea:focus-visible {
 }
 
 .roll-label-stack {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  height: 2.7em;
   display: flex;
   flex-direction: column;
   transform: translateY(0);
@@ -399,7 +440,9 @@ textarea:focus-visible {
 }
 
 .roll-label-stack > span {
+  flex: 0 0 1.35em;
   height: 1.35em;
+  min-height: 1.35em;
   display: flex;
   align-items: center;
   white-space: nowrap;
@@ -973,6 +1016,11 @@ textarea:focus-visible {
   transition: background 240ms ease, box-shadow 240ms ease, transform 150ms var(--roll-ease);
 }
 
+.whatsapp-button .roll-label {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
 .whatsapp-button:focus-visible {
   background: var(--text);
   box-shadow: 0 0 0 5px rgba(79, 195, 247, .07);
@@ -1225,6 +1273,8 @@ textarea:focus-visible {
     background-size: 48px 48px;
   }
 
+  .hero-pointer-ambient { display: none; }
+
   .hero-content { padding-top: 0; }
   .hero-portrait { width: 148px; height: 148px; }
   .hero-name { margin-top: 22px; font-size: clamp(2.55rem, 12vw, 3.35rem); }
@@ -1322,6 +1372,8 @@ textarea:focus-visible {
     opacity: 1 !important;
     transform: none !important;
   }
+
+  .hero-pointer-ambient { display: none !important; }
 
   .service-card:hover,
   .project-card:hover,
