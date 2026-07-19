@@ -7,11 +7,18 @@ import {
   ArrowRight,
   ArrowUpRight,
   CalendarCheck2,
+  CheckCircle2,
+  ChevronDown,
+  Code2,
   ExternalLink,
   Globe2,
+  LayoutTemplate,
   Layers3,
   Menu,
   MonitorSmartphone,
+  Rocket,
+  Search,
+  Send,
   ShoppingBag,
   Utensils,
   X,
@@ -38,6 +45,15 @@ const projects = [
       it: "Struttura editoriale, navigazione chiara e percorsi di contatto per le due sedi.",
       en: "Editorial structure, clear navigation, and direct contact paths for both showrooms.",
     },
+    role: { it: "Web design e sviluppo Framer", en: "Web design and Framer development" },
+    contribution: {
+      it: "Ho lavorato sulla struttura responsive, sulla gerarchia editoriale e sui percorsi di contatto dedicati ai due showroom.",
+      en: "I worked on the responsive structure, editorial hierarchy, and contact paths for the two showrooms.",
+    },
+    lesson: {
+      it: "Un’offerta ampia diventa più credibile quando contenuti e contatti sono organizzati attorno alle decisioni reali del visitatore.",
+      en: "A broad offer becomes more credible when content and contact paths follow the visitor’s real decisions.",
+    },
     tags: ["Framer", "Responsive", "UX"],
   },
   {
@@ -57,6 +73,15 @@ const projects = [
     result: {
       it: "Esperienza bilingue e percorsi diretti verso prenotazioni e richieste evento.",
       en: "A bilingual experience with direct paths to bookings and event enquiries.",
+    },
+    role: { it: "Web design e sviluppo Framer", en: "Web design and Framer development" },
+    contribution: {
+      it: "Ho organizzato pagine bilingue per ristorante, terrazza, matrimoni ed eventi, mantenendo prenotazione e richiesta informazioni sempre vicine.",
+      en: "I organized bilingual pages for dining, the terrace, weddings, and events while keeping booking and enquiries close at hand.",
+    },
+    lesson: {
+      it: "Nell’hospitality la fotografia crea desiderio, ma una prenotazione evidente trasforma quell’interesse in un passo concreto.",
+      en: "In hospitality, photography creates desire, but an obvious booking path turns that interest into action.",
     },
     tags: ["Framer", "IT / EN", "Booking"],
   },
@@ -78,6 +103,15 @@ const projects = [
       it: "Gerarchia più calma, identità riconoscibile e call to action costruite intorno alla consulenza.",
       en: "Calmer hierarchy, recognizable identity, and calls to action built around the consultation journey.",
     },
+    role: { it: "Web design e sviluppo Framer", en: "Web design and Framer development" },
+    contribution: {
+      it: "Ho tradotto il tono personale della planner in una gerarchia elegante, pagine responsive e un percorso verso la consulenza.",
+      en: "I translated the planner’s personal tone into an elegant hierarchy, responsive pages, and a clear path to consultation.",
+    },
+    lesson: {
+      it: "Per un servizio molto personale, il sito deve costruire fiducia prima di chiedere un contatto.",
+      en: "For a highly personal service, the website needs to build trust before asking for contact.",
+    },
     tags: ["Framer", "Brand tone", "Contact flow"],
   },
   {
@@ -97,6 +131,15 @@ const projects = [
     result: {
       it: "Storia, piatti, orari e prenotazione riuniti in un percorso chiaro anche per il pubblico internazionale.",
       en: "Story, dishes, opening hours, and reservations brought together for international visitors.",
+    },
+    role: { it: "Web design e sviluppo Framer", en: "Web design and Framer development" },
+    contribution: {
+      it: "Ho riunito storia, cucina, informazioni pratiche e prenotazione in un’esperienza leggibile anche per chi visita Firenze.",
+      en: "I brought the story, food, practical information, and reservations into one experience for visitors to Florence.",
+    },
+    lesson: {
+      it: "La storia di un ristorante funziona meglio quando resta collegata alle informazioni che servono per scegliere e prenotare.",
+      en: "A restaurant’s story works best when it stays connected to the information people need to choose and book.",
     },
     tags: ["Framer", "Restaurant UX", "Reservation"],
   },
@@ -118,6 +161,15 @@ const projects = [
       it: "Hero ad alto impatto, navigazione bilingue e accesso immediato a catalogo e contatti.",
       en: "A high-impact hero, bilingual navigation, and immediate access to the catalogue and contact details.",
     },
+    role: { it: "Direzione web e sviluppo Framer", en: "Web direction and Framer development" },
+    contribution: {
+      it: "Ho costruito una direzione visiva contemporanea con navigazione bilingue e accessi chiari a produzione, catalogo e contatti.",
+      en: "I built a contemporary visual direction with bilingual navigation and clear access to production, catalogue, and contact information.",
+    },
+    lesson: {
+      it: "Un’identità forte deve comunque aiutare il visitatore a capire rapidamente prodotti, capacità e prossimo passo.",
+      en: "A strong identity still needs to help visitors quickly understand the products, capabilities, and next step.",
+    },
     tags: ["Framer", "Food brand", "IT / EN"],
   },
   {
@@ -138,11 +190,23 @@ const projects = [
       it: "Contenuti promozionali facili da scoprire e percorsi diretti verso evento, menu e prenotazione.",
       en: "Promotional content that is easy to discover, with direct paths to events, menus, and table booking.",
     },
+    role: { it: "Web design e sviluppo Framer", en: "Web design and Framer development" },
+    contribution: {
+      it: "Ho organizzato offerte, menu, eventi e prenotazione attorno all’energia del locale e a percorsi rapidi da mobile.",
+      en: "I organized offers, menus, events, and booking around the venue’s energy and fast mobile paths.",
+    },
+    lesson: {
+      it: "I contenuti che cambiano spesso hanno bisogno di una struttura semplice, altrimenti offerte ed eventi diventano difficili da trovare.",
+      en: "Frequently changing content needs a simple structure, or offers and events quickly become hard to find.",
+    },
     tags: ["Framer", "Offers", "Booking"],
   },
 ];
 
 const serviceIcons = [Layers3, Utensils, CalendarCheck2, MonitorSmartphone, ShoppingBag, Globe2];
+const processIcons = [Search, LayoutTemplate, Code2, Rocket];
+const formEndpoint = "https://formsubmit.co/ajax/dinalrandika@icloud.com";
+const formAction = "https://formsubmit.co/dinalrandika@icloud.com";
 
 const content = {
   it: {
@@ -181,12 +245,36 @@ const content = {
       ["WooCommerce & manutenzione", "Supporto WordPress, Elementor, Divi, piccoli e-commerce, correzioni e aggiornamenti pratici."],
       ["Domini, hosting & lancio", "Aiuto con DNS, dominio, hosting, test finali e le piccole cose tecniche che possono bloccare una pubblicazione."],
     ],
+    processTitle: "Come lavoro",
+    processSubtitle: "Un percorso concreto",
+    processIntro: "Parto dall’attività e dalle decisioni che il sito deve rendere più semplici. Il design arriva dopo una struttura chiara.",
+    process: [
+      ["Capire l’attività", "Obiettivi, pubblico, contenuti disponibili e problemi reali: prenotazioni, menu, richieste o vendite."],
+      ["Progettare il percorso", "Organizzo pagine, priorità e call to action prima di definire la direzione visiva."],
+      ["Costruire e testare", "Sviluppo pagine responsive, provo moduli e contatti e controllo il comportamento sui dispositivi reali."],
+      ["Pubblicare e supportare", "Gestisco gli ultimi dettagli tecnici, il lancio e le correzioni pratiche che emergono dopo la pubblicazione."],
+    ],
     projectsTitle: "Progetti",
     projectsSubtitle: "Una selezione del mio lavoro",
     projectsIntro: "Sei progetti reali, costruiti attorno al carattere e alle necessità di ogni attività.",
     filters: [["Tutti", "all"], ["Ristoranti", "restaurants"], ["Brand", "brands"], ["Eventi", "events"]],
     result: "Risultato",
+    projectDetails: "Il mio contributo",
+    role: "Ruolo",
+    contribution: "Cosa ho realizzato",
+    learned: "Cosa ho imparato",
     visit: "Visita il sito",
+    externalNote: "Si apre in una nuova scheda",
+    conceptsTitle: "Concept lab",
+    conceptsSubtitle: "Direzioni demo per l’hospitality",
+    conceptsIntro: "Tre idee che sto sviluppando per mostrare a ristoranti, hotel e bar una prima direzione visiva prima di parlare di un progetto completo. Sono concept demo, non lavori cliente.",
+    conceptStatus: "Concept demo · in sviluppo",
+    concepts: [
+      ["Ristorante indipendente", "Dal menu alla prenotazione", "Una direzione mobile-first che rende cucina, menu, orari e prenotazione immediatamente accessibili.", ["Menu leggibile", "Prenotazione diretta", "Contatto WhatsApp"]],
+      ["Boutique hotel", "Dalla camera alla richiesta", "Un’esperienza editoriale per presentare camere, atmosfera, offerte stagionali e richiesta di soggiorno diretto.", ["Camere e servizi", "Offerte stagionali", "Richiesta diretta"]],
+      ["Cocktail bar", "Una serata, prima di arrivare", "Un concept più energico per cocktail, eventi, orari e indicazioni, pensato soprattutto per il traffico mobile serale.", ["Drink menu", "Eventi", "Mappa e contatto"]],
+    ],
+    conceptCta: "Parliamo di una demo per la tua attività",
     contactTitle: "Contattami",
     contactSubtitle: "Lavoriamo insieme",
     contactIntro: "Raccontami la tua attività, cosa non funziona oggi e cosa vuoi ottenere. Ti rispondo con un primo consiglio pratico.",
@@ -198,8 +286,12 @@ const content = {
       services: ["Sito per ristorante o hotel", "Sito Framer", "Sito WordPress", "Landing page", "Manutenzione o correzioni", "Altro"],
       message: "Messaggio",
       messagePlaceholder: "Parlami della tua attività e del risultato che vuoi ottenere.",
-      submit: "Prepara l’email",
-      note: "Il pulsante apre la tua app email con il messaggio già compilato.",
+      submit: "Invia la richiesta",
+      submitting: "Invio in corso",
+      success: "Messaggio inviato. Ti risponderò appena possibile.",
+      error: "Non sono riuscito a inviare il messaggio. Usa l’email diretta o WhatsApp.",
+      note: "Il messaggio viene consegnato via email senza aprire un’altra applicazione.",
+      privacy: "La richiesta viene elaborata tramite FormSubmit esclusivamente per consegnarla alla mia email.",
       subject: "Richiesta progetto web",
     },
     email: "Email diretta",
@@ -247,12 +339,36 @@ const content = {
       ["WooCommerce & maintenance", "WordPress, Elementor, Divi, small e-commerce, fixes, and practical ongoing updates."],
       ["Domains, hosting & launch", "Help with DNS, domains, hosting, final testing, and the technical details that can block a launch."],
     ],
+    processTitle: "How I work",
+    processSubtitle: "A practical path",
+    processIntro: "I start with the business and the decisions the website needs to make easier. The visual direction comes after the structure is clear.",
+    process: [
+      ["Understand the business", "Goals, audience, available content, and the real problem: bookings, menus, enquiries, or sales."],
+      ["Plan the journey", "I organize pages, priorities, and calls to action before defining the visual direction."],
+      ["Build and test", "I develop responsive pages, test forms and contact paths, and check behaviour on real screen sizes."],
+      ["Launch and support", "I handle the final technical details, publication, and the practical corrections that appear after launch."],
+    ],
     projectsTitle: "Projects",
     projectsSubtitle: "Some of my work",
     projectsIntro: "Six real projects, each built around the character and practical needs of the business.",
     filters: [["All", "all"], ["Restaurants", "restaurants"], ["Brands", "brands"], ["Events", "events"]],
     result: "Outcome",
+    projectDetails: "My contribution",
+    role: "Role",
+    contribution: "What I built",
+    learned: "What I learned",
     visit: "Visit website",
+    externalNote: "Opens in a new tab",
+    conceptsTitle: "Concept lab",
+    conceptsSubtitle: "Demo directions for hospitality",
+    conceptsIntro: "Three ideas I am developing to show restaurants, hotels, and bars an initial visual direction before discussing a complete project. These are demo concepts, not client work.",
+    conceptStatus: "Demo concept · in progress",
+    concepts: [
+      ["Independent restaurant", "From menu to booking", "A mobile-first direction that keeps the food, menu, opening hours, and reservation path immediately accessible.", ["Readable menu", "Direct booking", "WhatsApp contact"]],
+      ["Boutique hotel", "From room to enquiry", "An editorial experience for rooms, atmosphere, seasonal offers, and direct stay enquiries.", ["Rooms and services", "Seasonal offers", "Direct enquiry"]],
+      ["Cocktail bar", "The night starts before arrival", "A more energetic concept for drinks, events, opening hours, and directions, designed around evening mobile traffic.", ["Drinks menu", "Events", "Map and contact"]],
+    ],
+    conceptCta: "Discuss a demo for your business",
     contactTitle: "Get in touch",
     contactSubtitle: "Let’s work together",
     contactIntro: "Tell me about your business, what is not working today, and what you want to achieve. I will reply with a practical first recommendation.",
@@ -264,8 +380,12 @@ const content = {
       services: ["Restaurant or hotel website", "Framer website", "WordPress website", "Landing page", "Maintenance or fixes", "Other"],
       message: "Message",
       messagePlaceholder: "Tell me about your business and the result you want to achieve.",
-      submit: "Prepare email",
-      note: "This button opens your email app with the details already filled in.",
+      submit: "Send enquiry",
+      submitting: "Sending",
+      success: "Message sent. I will reply as soon as possible.",
+      error: "I could not send the message. Please use direct email or WhatsApp.",
+      note: "Your message is delivered by email without opening another application.",
+      privacy: "The enquiry is processed through FormSubmit solely to deliver it to my email.",
       subject: "Website project enquiry",
     },
     email: "Direct email",
@@ -323,7 +443,7 @@ function SectionHeading({ title, subtitle, id }) {
 function ProjectCard({ project, index, lang, labels }) {
   return (
     <article className="project-card reveal" data-reveal style={{ "--reveal-delay": `${(index % 3) * 55}ms` }}>
-      <a className="project-image" href={project.url} target="_blank" rel="noreferrer" aria-label={`${labels.visit}: ${project.name}`}>
+      <div className="project-image">
         <img
           src={project.image}
           alt={project.alt[lang]}
@@ -334,22 +454,58 @@ function ProjectCard({ project, index, lang, labels }) {
           decoding="async"
         />
         <span className="project-number">{String(index + 1).padStart(2, "0")}</span>
-      </a>
+      </div>
       <div className="project-body">
         <div className="project-topline">
           <div>
             <p className="project-category">{project.category[lang]}</p>
             <h3>{project.name}</h3>
           </div>
-          <a className="project-arrow" href={project.url} target="_blank" rel="noreferrer" aria-label={`${labels.visit}: ${project.name}`}>
-            <span className="project-arrow-label" aria-hidden="true">{labels.visit}</span>
+          <span className="project-arrow" aria-hidden="true">
             <ArrowUpRight size={19} />
-          </a>
+          </span>
         </div>
         <p className="project-summary">{project.summary[lang]}</p>
         <p className="project-result"><span>{labels.result}</span>{project.result[lang]}</p>
+        <details className="project-details">
+          <summary>
+            <span>{labels.projectDetails}</span>
+            <ChevronDown size={17} aria-hidden="true" />
+          </summary>
+          <div className="project-details__content">
+            <p><span>{labels.role}</span>{project.role[lang]}</p>
+            <p><span>{labels.contribution}</span>{project.contribution[lang]}</p>
+            <p><span>{labels.learned}</span>{project.lesson[lang]}</p>
+          </div>
+        </details>
         <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-        <a className="project-link" href={project.url} target="_blank" rel="noreferrer">{labels.visit}<ExternalLink size={15} /></a>
+        <a className="project-link" href={project.url} target="_blank" rel="noreferrer" aria-label={`${labels.visit}: ${project.name}. ${labels.externalNote}`}>
+          {labels.visit}<ExternalLink size={15} />
+          <span className="sr-only">{labels.externalNote}</span>
+        </a>
+      </div>
+    </article>
+  );
+}
+
+function ConceptCard({ concept, index, labels }) {
+  const [type, title, description, points] = concept;
+
+  return (
+    <article className={`concept-card concept-card--${index + 1} reveal`} data-reveal style={{ "--reveal-delay": `${index * 65}ms` }}>
+      <div className="concept-visual" aria-hidden="true">
+        <span className="concept-visual__bar" />
+        <span className="concept-visual__headline" />
+        <span className="concept-visual__copy" />
+        <span className="concept-visual__action" />
+        <span className="concept-visual__media" />
+      </div>
+      <div className="concept-card__body">
+        <p className="concept-status">{labels.conceptStatus}</p>
+        <p className="concept-type">{type}</p>
+        <h3>{title}</h3>
+        <p className="concept-description">{description}</p>
+        <ul>{points.map((point) => <li key={point}><CheckCircle2 size={15} />{point}</li>)}</ul>
       </div>
     </article>
   );
@@ -361,6 +517,7 @@ export function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [activeFilter, setActiveFilter] = useState("all");
   const [headerScrolled, setHeaderScrolled] = useState(false);
+  const [formStatus, setFormStatus] = useState("idle");
   const menuButtonRef = useRef(null);
   const heroRef = useRef(null);
   const heroAmbientRef = useRef(null);
@@ -494,18 +651,39 @@ export function App() {
   const closeMenu = () => setMenuOpen(false);
   const whatsappHref = `https://wa.me/393393515742?text=${encodeURIComponent(t.whatsappMessage)}`;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const body = [
-      `${t.form.name}: ${data.get("name")}`,
-      `${t.form.email}: ${data.get("email")}`,
-      `${t.form.service}: ${data.get("service")}`,
-      "",
-      `${t.form.message}:`,
-      data.get("message"),
-    ].join("\n");
-    window.location.href = `mailto:dinalrandika@icloud.com?subject=${encodeURIComponent(t.form.subject)}&body=${encodeURIComponent(body)}`;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    if (data.get("_honey")) return;
+
+    setFormStatus("submitting");
+
+    try {
+      const response = await fetch(formEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          service: data.get("service"),
+          message: data.get("message"),
+          _subject: t.form.subject,
+          _template: "table",
+        }),
+      });
+
+      if (!response.ok) throw new Error("Form submission failed");
+
+      form.reset();
+      setFormStatus("success");
+    } catch {
+      setFormStatus("error");
+    }
   };
 
   return (
@@ -514,7 +692,7 @@ export function App() {
         <Wordmark />
         <nav id="site-navigation" className={menuOpen ? "nav nav--open" : "nav"} aria-label={t.primaryNavLabel}>
           {t.nav.map(([label, id]) => (
-            <a key={id} href={`#${id}`} className={activeSection === id ? "active" : ""} aria-current={activeSection === id ? "page" : undefined} onClick={closeMenu}>{label}</a>
+            <a key={id} href={`#${id}`} className={activeSection === id ? "active" : ""} aria-current={activeSection === id ? "location" : undefined} onClick={closeMenu}>{label}</a>
           ))}
           <a className="nav-mobile-contact" href="#contact" onClick={closeMenu}>{t.contactNav}</a>
         </nav>
@@ -541,14 +719,15 @@ export function App() {
           <div className="hero-portrait hero-enter hero-enter--1">
             <img src="/assets/dinal-profile.avif" alt={t.profileAlt} width="1086" height="1448" fetchPriority="high" />
           </div>
-          <h1 id="hero-title" className="hero-name hero-enter hero-enter--2">Dinal Randika</h1>
-          <p className="hero-role hero-enter hero-enter--3">{t.heroRole}</p>
-          <p className="hero-copy hero-enter hero-enter--4"><strong>{t.heroStatement}</strong> {t.heroText}</p>
-          <div className="hero-actions hero-enter hero-enter--5">
+          <p className="hero-name hero-enter hero-enter--2">Dinal Randika</p>
+          <h1 id="hero-title" className="hero-statement hero-enter hero-enter--3">{t.heroStatement}</h1>
+          <p className="hero-role hero-enter hero-enter--4">{t.heroRole}</p>
+          <p className="hero-copy hero-enter hero-enter--5">{t.heroText}</p>
+          <div className="hero-actions hero-enter hero-enter--6">
             <a className="button button--outline motion-cta" href="#contact"><RollLabel>{t.start}</RollLabel><ArrowRight size={17} /></a>
             <a className="text-button motion-cta motion-cta--down" href="#projects"><RollLabel>{t.workCta}</RollLabel><ArrowDown size={16} /></a>
           </div>
-          <p className="hero-proof hero-enter hero-enter--6">{t.proof}</p>
+          <p className="hero-proof hero-enter hero-enter--7">{t.proof}</p>
         </div>
         <a className="scroll-cue" href="#about"><span>{t.scroll}</span><ArrowDown size={16} /></a>
       </section>
@@ -578,6 +757,25 @@ export function App() {
         </div>
       </section>
 
+      <section id="process" className="process section-shell" aria-labelledby="process-title">
+        <SectionHeading id="process-title" title={t.processTitle} subtitle={t.processSubtitle} />
+        <p className="process-intro reveal" data-reveal>{t.processIntro}</p>
+        <div className="process-accordion">
+          {t.process.map(([title, description], index) => {
+            const Icon = processIcons[index];
+            return (
+              <article className="process-step reveal" data-reveal style={{ "--reveal-delay": `${index * 55}ms` }} key={title}>
+                <span className="process-icon" aria-hidden="true"><Icon size={21} strokeWidth={1.8} /></span>
+                <div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
       <section id="projects" className="projects section-shell" aria-labelledby="projects-title">
         <SectionHeading id="projects-title" title={t.projectsTitle} subtitle={t.projectsSubtitle} />
         <p className="projects-intro reveal" data-reveal>{t.projectsIntro}</p>
@@ -591,11 +789,23 @@ export function App() {
         </div>
       </section>
 
+      <section id="concepts" className="concepts section-shell" aria-labelledby="concepts-title">
+        <SectionHeading id="concepts-title" title={t.conceptsTitle} subtitle={t.conceptsSubtitle} />
+        <p className="concepts-intro reveal" data-reveal>{t.conceptsIntro}</p>
+        <div className="concept-grid">
+          {t.concepts.map((concept, index) => <ConceptCard key={concept[0]} concept={concept} index={index} labels={t} />)}
+        </div>
+        <a className="button button--outline motion-cta concepts-cta reveal" data-reveal href="#contact"><RollLabel>{t.conceptCta}</RollLabel><ArrowRight size={17} /></a>
+      </section>
+
       <section id="contact" className="contact section-shell" aria-labelledby="contact-title">
         <SectionHeading id="contact-title" title={t.contactTitle} subtitle={t.contactSubtitle} />
         <p className="contact-intro reveal" data-reveal>{t.contactIntro}</p>
         <div className="contact-layout">
-          <form className="contact-form reveal" data-reveal onSubmit={handleSubmit}>
+          <form className="contact-form reveal" data-reveal action={formAction} method="POST" onSubmit={handleSubmit} aria-busy={formStatus === "submitting"}>
+            <input className="honeypot" type="text" name="_honey" tabIndex="-1" autoComplete="off" aria-hidden="true" />
+            <input type="hidden" name="_subject" value={t.form.subject} />
+            <input type="hidden" name="_template" value="table" />
             <label htmlFor="name">{t.form.name}</label>
             <input id="name" name="name" type="text" autoComplete="name" required />
             <label htmlFor="email">{t.form.email}</label>
@@ -607,8 +817,16 @@ export function App() {
             </select>
             <label htmlFor="message">{t.form.message}</label>
             <textarea id="message" name="message" rows="6" placeholder={t.form.messagePlaceholder} required />
-            <button className="form-submit motion-cta motion-cta--diagonal" type="submit"><RollLabel>{t.form.submit}</RollLabel><ArrowUpRight size={18} /></button>
+            <button className="form-submit motion-cta motion-cta--diagonal" type="submit" disabled={formStatus === "submitting"}>
+              <RollLabel>{formStatus === "submitting" ? t.form.submitting : t.form.submit}</RollLabel><Send size={18} />
+            </button>
             <p className="form-note">{t.form.note}</p>
+            <p className="form-privacy">{t.form.privacy}</p>
+            {formStatus !== "idle" && formStatus !== "submitting" && (
+              <p className={`form-status form-status--${formStatus}`} role="status" aria-live="polite">
+                {formStatus === "success" ? t.form.success : t.form.error}
+              </p>
+            )}
           </form>
           <aside className="contact-direct reveal" data-reveal>
             <p>{t.email}</p>
