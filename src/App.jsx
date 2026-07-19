@@ -207,6 +207,7 @@ const serviceIcons = [Layers3, Utensils, CalendarCheck2, MonitorSmartphone, Shop
 const processIcons = [Search, LayoutTemplate, Code2, Rocket];
 const formEndpoint = "https://formsubmit.co/ajax/dinalrandika@icloud.com";
 const formAction = "https://formsubmit.co/dinalrandika@icloud.com";
+const productionContactUrl = "https://dinalrandika.github.io/#contact";
 
 const content = {
   it: {
@@ -674,6 +675,8 @@ export function App() {
           message: data.get("message"),
           _subject: t.form.subject,
           _template: "table",
+          _url: productionContactUrl,
+          _next: productionContactUrl,
         }),
       });
 
@@ -806,6 +809,8 @@ export function App() {
             <input className="honeypot" type="text" name="_honey" tabIndex="-1" autoComplete="off" aria-hidden="true" />
             <input type="hidden" name="_subject" value={t.form.subject} />
             <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_url" value={productionContactUrl} />
+            <input type="hidden" name="_next" value={productionContactUrl} />
             <label htmlFor="name">{t.form.name}</label>
             <input id="name" name="name" type="text" autoComplete="name" required />
             <label htmlFor="email">{t.form.email}</label>
