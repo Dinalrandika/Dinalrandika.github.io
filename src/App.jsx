@@ -728,7 +728,7 @@ export function App() {
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-content section-shell">
           <div className="hero-portrait hero-enter hero-enter--1">
-            <img src="/assets/dinal-profile.avif" alt={t.profileAlt} width="1086" height="1448" fetchPriority="high" />
+            <img src="/assets/dinal-profile.avif" alt={t.profileAlt} width="640" height="640" fetchPriority="high" />
           </div>
           <p className="hero-name hero-enter hero-enter--2">Dinal Randika</p>
           <h1 id="hero-title" className="hero-statement hero-enter hero-enter--3">{t.heroStatement}</h1>
