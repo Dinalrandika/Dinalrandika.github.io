@@ -1034,6 +1034,15 @@ textarea:focus-visible {
 .concept-card--2 .concept-visual { background-position: 0 0, 0 0, center; filter: saturate(.82); }
 .concept-card--3 .concept-visual { background-position: 0 0, 0 0, right; filter: contrast(1.06); }
 
+.concept-visual > img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 420ms var(--roll-ease);
+}
+
 .concept-visual span { position: absolute; display: block; }
 
 .concept-visual__bar {
@@ -1136,6 +1145,20 @@ textarea:focus-visible {
 }
 
 .concept-card li svg { color: var(--accent); flex: 0 0 auto; }
+
+.concept-link {
+  width: max-content;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 16px;
+  color: var(--accent-soft);
+  font-size: .75rem;
+  font-weight: 600;
+}
+
+.concept-link svg { transition: transform 220ms var(--roll-ease); }
 
 .concepts-cta {
   width: max-content;
@@ -1483,6 +1506,8 @@ textarea:focus-visible {
   .concept-card:hover .concept-visual__media { transform: translateY(-4px) rotate(3deg) scale(1.02); }
   .concept-card--2:hover .concept-visual__media { transform: translateY(-4px) rotate(-3deg) scale(1.02); }
   .concept-card--3:hover .concept-visual__media { transform: translateY(-4px) scale(1.02); }
+  .concept-card:hover .concept-visual > img { transform: scale(1.02); }
+  .concept-link:hover svg { transform: translateX(4px); }
 
   .form-submit:hover,
   .footer-cta > a:hover,
@@ -1722,6 +1747,7 @@ textarea:focus-visible {
   .process-step:hover,
   .project-card:hover,
   .concept-card:hover,
+  .concept-card:hover .concept-visual > img,
   .project-card:hover .project-image img,
   .service-card:hover .service-icon,
   .process-step:hover .process-icon,

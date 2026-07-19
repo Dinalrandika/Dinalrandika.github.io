@@ -267,14 +267,16 @@ const content = {
     visit: "Visita il sito",
     externalNote: "Si apre in una nuova scheda",
     conceptsTitle: "Concept lab",
-    conceptsSubtitle: "Direzioni demo per l’hospitality",
-    conceptsIntro: "Tre idee che sto sviluppando per mostrare a ristoranti, hotel e bar una prima direzione visiva prima di parlare di un progetto completo. Sono concept demo, non lavori cliente.",
+    conceptsSubtitle: "Direzioni demo per attività reali",
+    conceptsIntro: "Tre direzioni demo pensate per mostrare come struttura, contenuti e contatto possono adattarsi ad attività diverse. Sono concept dimostrativi, non lavori cliente.",
     conceptStatus: "Concept demo · in sviluppo",
+    conceptStatusLive: "Concept demo · online",
     concepts: [
       ["Ristorante indipendente", "Dal menu alla prenotazione", "Una direzione mobile-first che rende cucina, menu, orari e prenotazione immediatamente accessibili.", ["Menu leggibile", "Prenotazione diretta", "Contatto WhatsApp"]],
-      ["Boutique hotel", "Dalla camera alla richiesta", "Un’esperienza editoriale per presentare camere, atmosfera, offerte stagionali e richiesta di soggiorno diretto.", ["Camere e servizi", "Offerte stagionali", "Richiesta diretta"]],
+      ["Soluzioni industriali", "D.T.ES. — tecnologia e assistenza", "Un sito business in italiano che presenta utensili, macchine e assistenza tecnica con un percorso chiaro verso il contatto.", ["Servizi e soluzioni", "Macchine e marchi", "Contatto tecnico"], "https://artsy-three-240104.framer.app/", "/assets/showcase-dtes-demo.avif", "Homepage del concept D.T.ES. per soluzioni industriali"],
       ["Cocktail bar", "Una serata, prima di arrivare", "Un concept più energico per cocktail, eventi, orari e indicazioni, pensato soprattutto per il traffico mobile serale.", ["Drink menu", "Eventi", "Mappa e contatto"]],
     ],
+    viewDemo: "Visita il demo",
     conceptCta: "Parliamo di una demo per la tua attività",
     contactTitle: "Contattami",
     contactSubtitle: "Lavoriamo insieme",
@@ -361,14 +363,16 @@ const content = {
     visit: "Visit website",
     externalNote: "Opens in a new tab",
     conceptsTitle: "Concept lab",
-    conceptsSubtitle: "Demo directions for hospitality",
-    conceptsIntro: "Three ideas I am developing to show restaurants, hotels, and bars an initial visual direction before discussing a complete project. These are demo concepts, not client work.",
+    conceptsSubtitle: "Demo directions for real businesses",
+    conceptsIntro: "Three demo directions showing how structure, content, and contact paths can adapt to different businesses. These are demonstration concepts, not client work.",
     conceptStatus: "Demo concept · in progress",
+    conceptStatusLive: "Demo concept · live",
     concepts: [
       ["Independent restaurant", "From menu to booking", "A mobile-first direction that keeps the food, menu, opening hours, and reservation path immediately accessible.", ["Readable menu", "Direct booking", "WhatsApp contact"]],
-      ["Boutique hotel", "From room to enquiry", "An editorial experience for rooms, atmosphere, seasonal offers, and direct stay enquiries.", ["Rooms and services", "Seasonal offers", "Direct enquiry"]],
+      ["Industrial solutions", "D.T.ES. — technology and support", "An Italian business website presenting tools, machinery, and technical support with a clear path to contact.", ["Services and solutions", "Machines and brands", "Technical contact"], "https://artsy-three-240104.framer.app/", "/assets/showcase-dtes-demo.avif", "Homepage of the D.T.ES. industrial-solutions demo"],
       ["Cocktail bar", "The night starts before arrival", "A more energetic concept for drinks, events, opening hours, and directions, designed around evening mobile traffic.", ["Drinks menu", "Events", "Map and contact"]],
     ],
+    viewDemo: "Visit live demo",
     conceptCta: "Discuss a demo for your business",
     contactTitle: "Get in touch",
     contactSubtitle: "Let’s work together",
@@ -490,23 +494,35 @@ function ProjectCard({ project, index, lang, labels }) {
 }
 
 function ConceptCard({ concept, index, labels }) {
-  const [type, title, description, points] = concept;
+  const [type, title, description, points, url, image, imageAlt] = concept;
 
   return (
     <article className={`concept-card concept-card--${index + 1} reveal`} data-reveal style={{ "--reveal-delay": `${index * 65}ms` }}>
-      <div className="concept-visual" aria-hidden="true">
-        <span className="concept-visual__bar" />
-        <span className="concept-visual__headline" />
-        <span className="concept-visual__copy" />
-        <span className="concept-visual__action" />
-        <span className="concept-visual__media" />
+      <div className="concept-visual" aria-hidden={image ? undefined : true}>
+        {image ? (
+          <img src={image} alt={imageAlt} width="1200" height="750" loading="lazy" decoding="async" />
+        ) : (
+          <>
+            <span className="concept-visual__bar" />
+            <span className="concept-visual__headline" />
+            <span className="concept-visual__copy" />
+            <span className="concept-visual__action" />
+            <span className="concept-visual__media" />
+          </>
+        )}
       </div>
       <div className="concept-card__body">
-        <p className="concept-status">{labels.conceptStatus}</p>
+        <p className="concept-status">{url ? labels.conceptStatusLive : labels.conceptStatus}</p>
         <p className="concept-type">{type}</p>
         <h3>{title}</h3>
         <p className="concept-description">{description}</p>
         <ul>{points.map((point) => <li key={point}><CheckCircle2 size={15} />{point}</li>)}</ul>
+        {url && (
+          <a className="concept-link" href={url} target="_blank" rel="noreferrer" aria-label={`${labels.viewDemo}: ${title}. ${labels.externalNote}`}>
+            {labels.viewDemo}<ExternalLink size={15} />
+            <span className="sr-only">{labels.externalNote}</span>
+          </a>
+        )}
       </div>
     </article>
   );
