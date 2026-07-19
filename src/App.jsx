@@ -276,7 +276,6 @@ const content = {
       ["Soluzioni industriali", "D.T.ES. — tecnologia e assistenza", "Un sito business in italiano che presenta utensili, macchine e assistenza tecnica con un percorso chiaro verso il contatto.", ["Servizi e soluzioni", "Macchine e marchi", "Contatto tecnico"], "https://artsy-three-240104.framer.app/", "/assets/showcase-dtes-demo.avif", "Homepage del concept D.T.ES. per soluzioni industriali"],
       ["Cocktail bar", "Una serata, prima di arrivare", "Un concept più energico per cocktail, eventi, orari e indicazioni, pensato soprattutto per il traffico mobile serale.", ["Drink menu", "Eventi", "Mappa e contatto"]],
     ],
-    viewDemo: "Visita il demo",
     conceptCta: "Parliamo di una demo per la tua attività",
     contactTitle: "Contattami",
     contactSubtitle: "Lavoriamo insieme",
@@ -372,7 +371,6 @@ const content = {
       ["Industrial solutions", "D.T.ES. — technology and support", "An Italian business website presenting tools, machinery, and technical support with a clear path to contact.", ["Services and solutions", "Machines and brands", "Technical contact"], "https://artsy-three-240104.framer.app/", "/assets/showcase-dtes-demo.avif", "Homepage of the D.T.ES. industrial-solutions demo"],
       ["Cocktail bar", "The night starts before arrival", "A more energetic concept for drinks, events, opening hours, and directions, designed around evening mobile traffic.", ["Drinks menu", "Events", "Map and contact"]],
     ],
-    viewDemo: "Visit live demo",
     conceptCta: "Discuss a demo for your business",
     contactTitle: "Get in touch",
     contactSubtitle: "Let’s work together",
@@ -517,12 +515,6 @@ function ConceptCard({ concept, index, labels }) {
         <h3>{title}</h3>
         <p className="concept-description">{description}</p>
         <ul>{points.map((point) => <li key={point}><CheckCircle2 size={15} />{point}</li>)}</ul>
-        {url && (
-          <a className="concept-link" href={url} target="_blank" rel="noreferrer" aria-label={`${labels.viewDemo}: ${title}. ${labels.externalNote}`}>
-            {labels.viewDemo}<ExternalLink size={15} />
-            <span className="sr-only">{labels.externalNote}</span>
-          </a>
-        )}
       </div>
     </article>
   );

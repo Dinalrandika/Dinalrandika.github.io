@@ -1146,20 +1146,6 @@ textarea:focus-visible {
 
 .concept-card li svg { color: var(--accent); flex: 0 0 auto; }
 
-.concept-link {
-  width: max-content;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 16px;
-  color: var(--accent-soft);
-  font-size: .75rem;
-  font-weight: 600;
-}
-
-.concept-link svg { transition: transform 220ms var(--roll-ease); }
-
 .concepts-cta {
   width: max-content;
   margin-top: 38px;
@@ -1507,7 +1493,6 @@ textarea:focus-visible {
   .concept-card--2:hover .concept-visual__media { transform: translateY(-4px) rotate(-3deg) scale(1.02); }
   .concept-card--3:hover .concept-visual__media { transform: translateY(-4px) scale(1.02); }
   .concept-card:hover .concept-visual > img { transform: scale(1.02); }
-  .concept-link:hover svg { transform: translateX(4px); }
 
   .form-submit:hover,
   .footer-cta > a:hover,
