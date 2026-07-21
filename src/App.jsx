@@ -260,6 +260,8 @@ const content = {
     projectsIntro: "Sei progetti reali, costruiti attorno al carattere e alle necessità di ogni attività.",
     filters: [["Tutti", "all"], ["Ristoranti", "restaurants"], ["Brand", "brands"], ["Eventi", "events"]],
     result: "Risultato",
+    projectContext: "Contesto del progetto",
+    wasiscoCollaboration: "Realizzato in collaborazione con Wasisco, nell’ambito del mio lavoro con il team.",
     projectDetails: "Il mio contributo",
     role: "Ruolo",
     contribution: "Cosa ho realizzato",
@@ -355,6 +357,8 @@ const content = {
     projectsIntro: "Six real projects, each built around the character and practical needs of the business.",
     filters: [["All", "all"], ["Restaurants", "restaurants"], ["Brands", "brands"], ["Events", "events"]],
     result: "Outcome",
+    projectContext: "Project context",
+    wasiscoCollaboration: "Completed in collaboration with Wasisco as part of my work with the team.",
     projectDetails: "My contribution",
     role: "Role",
     contribution: "What I built",
@@ -470,6 +474,7 @@ function ProjectCard({ project, index, lang, labels }) {
         </div>
         <p className="project-summary">{project.summary[lang]}</p>
         <p className="project-result"><span>{labels.result}</span>{project.result[lang]}</p>
+        <p className="project-collaboration"><span>{labels.projectContext}</span>{labels.wasiscoCollaboration}</p>
         <details className="project-details">
           <summary>
             <span>{labels.projectDetails}</span>

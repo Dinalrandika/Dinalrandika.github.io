@@ -915,6 +915,27 @@ textarea:focus-visible {
   text-transform: uppercase;
 }
 
+.project-collaboration {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  color: #b7b7bf;
+  border: 1px solid rgba(79, 195, 247, .2);
+  border-radius: 8px;
+  background: rgba(79, 195, 247, .035);
+  font-size: .69rem;
+  line-height: 1.55;
+}
+
+.project-collaboration span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--accent-soft);
+  font-size: .56rem;
+  font-weight: 700;
+  letter-spacing: .075em;
+  text-transform: uppercase;
+}
+
 .project-details {
   margin-top: 14px;
   border-top: 1px solid var(--line);
